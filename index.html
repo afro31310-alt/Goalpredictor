@@ -1,240 +1,1839 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="GoalPredict - upcoming football fixtures, match predictions, statistics and analysis.">
-  <title>GoalPredict — Real Football Fixtures & Predictions</title>
-  <style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f5f7f5;color:#142019;line-height:1.5}.topbar{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:#fff;border-bottom:1px solid #e7ece8;position:sticky;top:0;z-index:20}.brand{font-size:22px;font-weight:850;color:#132018;text-decoration:none}.brand span{color:#13a45b}.brand-ball{margin-right:7px}.topbar nav{display:flex;gap:30px}.topbar nav a{color:#5c6962;text-decoration:none;font-weight:600;font-size:14px}.btn{border:0;border-radius:11px;padding:12px 18px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-block}.btn-primary{background:#0da35a;color:#fff;box-shadow:0 8px 22px #0da35a33}.btn-outline{background:#fff;border:1px solid #d9e1dc;color:#33423a}.hero{max-width:1180px;margin:0 auto;padding:88px 24px 68px;display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:center}.eyebrow{font-size:11px;font-weight:900;letter-spacing:2px;color:#0a9a53}.hero h1{font-size:64px;line-height:1.03;margin:14px 0 20px;letter-spacing:-3px}.hero h1 span{color:#0da35a}.hero p{font-size:17px;color:#647169;max-width:570px;margin-bottom:30px}.hero-card{background:#122019;color:#fff;border-radius:24px;padding:27px;box-shadow:0 25px 70px #13201925}.hero-card-head{display:flex;justify-content:space-between;color:#9eaca4;font-size:12px}.hero-card-head span{color:#67d99b;font-weight:900}.teams{display:grid;grid-template-columns:1fr 60px 1fr;text-align:center;align-items:center;padding:36px 0 25px}.crest{font-size:43px;margin-bottom:8px}.teams strong{display:block;font-size:17px}.teams small{color:#91a099}.vs{font-weight:900;color:#6e7b74;font-size:12px}.pick{background:#1d2d25;border:1px solid #2d4036;border-radius:15px;padding:15px;display:grid;grid-template-columns:1fr auto;gap:4px}.pick span{color:#98a59f;font-size:11px}.pick strong{font-size:16px}.pick em{grid-column:1/-1;color:#68d99c;font-style:normal;font-size:12px}.stats-strip{background:#fff;border-block:1px solid #e7ece8;display:grid;grid-template-columns:repeat(4,1fr);padding:25px 8%;text-align:center}.stats-strip div{border-right:1px solid #e5ebe7}.stats-strip div:last-child{border:0}.stats-strip strong{display:block;font-size:25px}.stats-strip span{color:#748078;font-size:12px}.section{max-width:1180px;margin:auto;padding:80px 24px 20px}.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:28px}.section-head h2{margin:6px 0 0;font-size:34px;letter-spacing:-1px}.controls{display:flex;gap:10px}.controls select{border:1px solid #dce4df;background:#fff;padding:11px 14px;border-radius:10px;color:#35433b}.match-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.match-card{background:#fff;border:1px solid #e2e9e4;border-radius:17px;padding:20px;cursor:pointer;transition:.2s}.match-card:hover{transform:translateY(-3px);box-shadow:0 12px 30px #14201912}.match-top{display:flex;justify-content:space-between;color:#77827c;font-size:11px}.league{font-weight:800;color:#44534b}.match-teams{display:grid;grid-template-columns:1fr 50px 1fr;text-align:center;align-items:center;padding:20px 0}.team{text-align:center}.team-icon{font-size:27px}.team-name{display:block;font-weight:800;margin-top:5px}.time{font-weight:900;font-size:13px;color:#68746d}.prediction{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #edf0ee;padding-top:14px}.prediction strong{color:#087f43}.confidence{font-size:12px;background:#e9f8f0;color:#087f43;border-radius:20px;padding:6px 9px;font-weight:800}.league-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.league-card{border:1px solid #e1e8e3;background:#fff;border-radius:15px;padding:20px 16px;display:flex;align-items:center;gap:10px;font-weight:800;cursor:pointer;text-align:left}.league-card b{margin-left:auto;color:#8b9690}.how{padding-bottom:70px}.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.how-grid article{background:#fff;border:1px solid #e2e9e4;border-radius:18px;padding:25px}.how-grid article>span{font-size:12px;font-weight:900;color:#0da35a}.how-grid h3{margin:12px 0 6px}.how-grid p{color:#69756e;font-size:14px}.notice{max-width:1132px;margin:20px auto 70px;background:#fff9e9;border:1px solid #f0dfad;border-radius:15px;padding:18px 22px;color:#5f512c}.notice strong{display:block}.notice p{margin:4px 0;font-size:13px}footer{padding:40px 7%;background:#122019;color:#aab7b0}footer .brand{color:#fff}footer p{font-size:13px}footer small{color:#74837b}.modal{position:fixed;inset:0;background:#09110dcc;display:grid;place-items:center;padding:20px;z-index:50}.hidden{display:none}.modal-box{width:min(560px,100%);background:#fff;border-radius:20px;padding:30px;position:relative}.modal-close{position:absolute;right:16px;top:12px;border:0;background:none;font-size:28px;cursor:pointer;color:#68746d}.detail-score{font-size:35px;font-weight:900;text-align:center;margin:20px}.detail-bars{display:grid;gap:10px}.bar{height:10px;background:#e7eee9;border-radius:10px;overflow:hidden}.bar i{display:block;height:100%;background:#0da35a}.dark body{background:#0c1510}.dark .topbar,.dark .match-card,.dark .league-card,.dark .how-grid article,.dark .modal-box,.dark .stats-strip{background:#15221b;color:#f4f7f5;border-color:#29382f}.dark .topbar nav a,.dark .hero p,.dark .stats-strip span,.dark .how-grid p{color:#a4b0aa}.dark .controls select,.dark .btn-outline{background:#15221b;color:#f4f7f5;border-color:#34443b}.dark .hero-card{background:#07100b}.dark .notice{background:#272317}.dark footer{background:#07100b}@media(max-width:800px){.topbar nav{display:none}.hero{grid-template-columns:1fr;padding-top:55px;gap:40px}.hero h1{font-size:48px}.stats-strip{grid-template-columns:repeat(2,1fr);gap:20px}.stats-strip div:nth-child(2){border:0}.match-grid,.how-grid{grid-template-columns:1fr}.league-grid{grid-template-columns:1fr 1fr}.section-head{display:block}.controls{margin-top:18px}.controls select{width:50%}}@media(max-width:480px){.hero h1{font-size:42px}.league-grid{grid-template-columns:1fr}.stats-strip{padding:25px 5%}.match-teams{grid-template-columns:1fr 35px 1fr}}
-</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="GoalPredict - Football fixtures and match predictions">
+<title>GoalPredict — Football Predictions</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-.account-btn,.primary-btn{border:0;border-radius:12px;padding:10px 16px;cursor:pointer;font-weight:700}
-.account-btn{margin-right:8px}
-.prediction-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-.prediction-card{padding:22px;border-radius:18px;border:1px solid rgba(128,128,128,.22);background:rgba(128,128,128,.06)}
-.prediction-card h3{margin:10px 0 18px}.prediction-card h3 span{opacity:.55;font-weight:400}
-.prediction-league,.eyebrow{font-size:12px;letter-spacing:.12em;font-weight:800;opacity:.7}
-.prediction-row{display:flex;justify-content:space-between;padding:10px 0;border-top:1px solid rgba(128,128,128,.18)}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:9999;align-items:center;justify-content:center;padding:20px}
-.modal.show{display:flex}.modal-card{position:relative;max-width:420px;width:100%;padding:28px;border-radius:22px;background:var(--card,#fff);color:inherit}
-.modal-card input{display:block;width:100%;box-sizing:border-box;margin:12px 0;padding:13px;border-radius:10px;border:1px solid #bbb}
-.modal-close{position:absolute;right:16px;top:12px;border:0;background:none;font-size:28px;cursor:pointer}
-.primary-btn{width:100%;margin-top:8px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;
+ font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+ background:#f5f7f5;
+ color:#142019;
+ line-height:1.5
+}
+.topbar{
+ height:76px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ padding:0 6%;
+ background:#fff;
+ border-bottom:1px solid #e3e9e5;
+ position:sticky;
+ top:0;
+ z-index:20
+}
+.brand{
+ font-size:22px;
+ font-weight:900;
+ color:#132018;
+ text-decoration:none
+}
+.brand span{color:#0da35a}
+nav{display:flex;gap:28px}
+nav a{
+ color:#5c6962;
+ text-decoration:none;
+ font-weight:700;
+ font-size:14px
+}
+.btn{
+ border:0;
+ border-radius:11px;
+ padding:12px 18px;
+ font-weight:800;
+ cursor:pointer;
+ text-decoration:none;
+ display:inline-block
+}
+.btn-primary{
+ background:#0da35a;
+ color:#fff;
+ box-shadow:0 8px 22px #0da35a33
+}
+.btn-outline{
+ background:#fff;
+ border:1px solid #d9e1dc;
+ color:#33423a
+}
+.hero{
+ max-width:1180px;
+ margin:auto;
+ padding:75px 24px;
+ display:grid;
+ grid-template-columns:1.15fr .85fr;
+ gap:60px;
+ align-items:center
+}
+.eyebrow{
+ font-size:11px;
+ font-weight:900;
+ letter-spacing:2px;
+ color:#0a9a53
+}
+.hero h1{
+ font-size:60px;
+ line-height:1.03;
+ margin:14px 0 20px;
+ letter-spacing:-3px
+}
+.hero h1 span{color:#0da35a}
+.hero p{
+ font-size:17px;
+ color:#647169;
+ max-width:570px;
+ margin-bottom:30px
+}
+.hero-card{
+ background:#122019;
+ color:#fff;
+ border-radius:24px;
+ padding:27px;
+ box-shadow:0 25px 70px #13201925
+}
+.hero-head{
+ display:flex;
+ justify-content:space-between;
+ color:#9eaca4;
+ font-size:12px
+}
+.hero-head span{color:#67d99b;font-weight:900}
+.hero-teams{
+ display:grid;
+ grid-template-columns:1fr 50px 1fr;
+ text-align:center;
+ align-items:center;
+ padding:35px 0 25px
+}
+.hero-teams strong{display:block;font-size:17px}
+.hero-teams small{color:#91a099}
+.vs{font-weight:900;color:#6e7b74}
+.pick{
+ background:#1d2d25;
+ border:1px solid #2d4036;
+ border-radius:15px;
+ padding:15px
+}
+.pick span{color:#98a59f;font-size:11px}
+.pick strong{display:block;font-size:16px;margin:3px 0}
+.pick em{color:#68d99c;font-style:normal;font-size:12px}
+.stats{
+ background:#fff;
+ border-block:1px solid #e7ece8;
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ padding:25px 8%;
+ text-align:center
+}
+.stats div{border-right:1px solid #e5ebe7}
+.stats div:last-child{border:0}
+.stats strong{display:block;font-size:25px}
+.stats span{color:#748078;font-size:12px}
+
+.section{
+ max-width:1180px;
+ margin:auto;
+ padding:70px 24px 20px
+}
+.section-head{
+ display:flex;
+ align-items:end;
+ justify-content:space-between;
+ margin-bottom:28px
+}
+.section-head h2{
+ margin:6px 0;
+ font-size:34px;
+ letter-spacing:-1px
+}
+.controls{display:flex;gap:10px}
+select{
+ border:1px solid #dce4df;
+ background:#fff;
+ padding:11px 14px;
+ border-radius:10px;
+ color:#35433b
+}
+.prediction-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:17px
+}
+.prediction-card{
+ background:#fff;
+ border:1px solid #e2e9e4;
+ border-radius:18px;
+ padding:20px;
+ transition:.2s
+}
+.prediction-card:hover{
+ transform:translateY(-3px);
+ box-shadow:0 12px 30px #14201912
+}
+.prediction-league{
+ font-size:11px;
+ letter-spacing:1.5px;
+ font-weight:900;
+ color:#0a9a53;
+ text-transform:uppercase
+}
+.prediction-card h3{
+ margin:10px 0 18px;
+ font-size:18px
+}
+.prediction-card h3 span{
+ color:#89948e;
+ font-weight:400
+}
+.prediction-row{
+ display:flex;
+ justify-content:space-between;
+ padding:10px 0;
+ border-top:1px solid #edf0ee;
+ font-size:14px
+}
+.prediction-row strong{color:#087f43}
+.confidence{
+ display:inline-block;
+ background:#e9f8f0;
+ color:#087f43;
+ border-radius:20px;
+ padding:6px 9px;
+ font-size:12px;
+ font-weight:800;
+ margin-top:8px
+}
+.match-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:15px
+}
+.match-card{
+ background:#fff;
+ border:1px solid #e2e9e4;
+ border-radius:17px;
+ padding:20px;
+ cursor:pointer
+}
+.match-top{
+ display:flex;
+ justify-content:space-between;
+ color:#77827c;
+ font-size:11px
+}
+.league{font-weight:800;color:#44534b}
+.match-teams{
+ display:grid;
+ grid-template-columns:1fr 50px 1fr;
+ text-align:center;
+ align-items:center;
+ padding:20px 0
+}
+.team-name{
+ display:block;
+ font-weight:800;
+ margin-top:5px
+}
+.team-icon{font-size:27px}
+.time{font-weight:900;font-size:13px;color:#68746d}
+.league-grid{
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
+ gap:12px
+}
+.league-card{
+ border:1px solid #e1e8e3;
+ background:#fff;
+ border-radius:15px;
+ padding:20px 16px;
+ display:flex;
+ align-items:center;
+ gap:10px;
+ font-weight:800;
+ cursor:pointer;
+ text-align:left
+}
+.league-card b{margin-left:auto;color:#8b9690}
+.how-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:16px
+}
+.how-grid article{
+ background:#fff;
+ border:1px solid #e2e9e4;
+ border-radius:18px;
+ padding:25px
+}
+.how-grid article>span{
+ font-size:12px;
+ font-weight:900;
+ color:#0da35a
+}
+.how-grid h3{margin:12px 0 6px}
+.how-grid p{color:#69756e;font-size:14px}
+.notice{
+ max-width:1132px;
+ margin:30px auto 70px;
+ background:#fff9e9;
+ border:1px solid #f0dfad;
+ border-radius:15px;
+ padding:18px 22px;
+ color:#5f512c
+}
+.notice strong{display:block}
+.notice p{margin:4px 0;font-size:13px}
+
+.modal{
+ display:none;
+ position:fixed;
+ inset:0;
+ background:#09110dcc;
+ z-index:9999;
+ align-items:center;
+ justify-content:center;
+ padding:20px
+}
+.modal.show{display:flex}
+.modal-card{
+ width:min(500px,100%);
+ max-height:90vh;
+ overflow:auto;
+ background:#fff;
+ border-radius:20px;
+ padding:28px;
+ position:relative
+}
+.modal-close{
+ position:absolute;
+ right:15px;
+ top:10px;
+ border:0;
+ background:none;
+ font-size:28px;
+ cursor:pointer
+}
+.modal-card input{
+ display:block;
+ width:100%;
+ padding:13px;
+ margin:12px 0;
+ border:1px solid #cfd8d2;
+ border-radius:10px;
+ font-size:15px
+}
+.primary{
+ width:100%;
+ background:#0da35a;
+ color:#fff;
+ border:0;
+ border-radius:11px;
+ padding:13px;
+ font-weight:800;
+ cursor:pointer
+}
+.secondary{
+ width:100%;
+ background:#fff;
+ color:#33423a;
+ border:1px solid #d9e1dc;
+ border-radius:11px;
+ padding:13px;
+ font-weight:800;
+ cursor:pointer;
+ margin-top:10px
+}
+.status{
+ margin-top:12px;
+ font-size:13px
+}
+.saved-item{
+ padding:12px 0;
+ border-top:1px solid #e2e7e4
+}
+.hidden{display:none!important}
+.loading{
+ text-align:center;
+ padding:40px;
+ color:#718078
+}
+.error{
+ background:#fff0f0;
+ color:#a32929;
+ border:1px solid #efcaca;
+ padding:15px;
+ border-radius:12px
+}
+footer{
+ padding:40px 7%;
+ background:#122019;
+ color:#aab7b0
+}
+footer .brand{color:#fff}
+footer p{font-size:13px}
+
+@media(max-width:850px){
+ nav{display:none}
+ .hero{
+  grid-template-columns:1fr;
+  padding-top:55px
+ }
+ .hero h1{font-size:48px}
+ .prediction-grid{grid-template-columns:1fr}
+ .match-grid{grid-template-columns:1fr}
+ .league-grid{grid-template-columns:1fr 1fr}
+ .how-grid{grid-template-columns:1fr}
+ .stats{
+  grid-template-columns:repeat(2,1fr);
+  gap:20px
+ }
+ .stats div:nth-child(2){border:0}
+ .section-head{display:block}
+ .controls{margin-top:18px}
+}
+@media(max-width:480px){
+ .hero h1{font-size:41px}
+ .league-grid{grid-template-columns:1fr}
+ .stats{padding:25px 5%}
+ .match-teams{grid-template-columns:1fr 35px 1fr}
+}
 </style>
 </head>
+
 <body>
-  <header class="topbar">
-    <a class="brand" href="#"><span class="brand-ball">⚽</span> Goal<span>Predict</span></a>
-    <nav>
-      <a href="#predictions">Predictions</a>
-      <a href="#leagues">Leagues</a>
-      <a href="#how">How it works</a>
-    </nav>
-    <button class="btn btn-outline" id="themeBtn" aria-label="Toggle theme">☾</button>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-copy">
-        <span class="eyebrow">FOOTBALL INTELLIGENCE</span>
-        <h1>Smarter match<br><span>predictions.</span></h1>
-        <p>Explore data-driven forecasts for upcoming football matches. Compare form, goals, home advantage and prediction confidence in one place.</p>
-        <a class="btn btn-primary" href="#predictions">Explore predictions →</a>
+<header class="topbar">
+  <a class="brand" href="#">⚽ Goal<span>Predict</span></a>
+
+  <nav>
+    <a href="#predictions">Predictions</a>
+    <a href="#matches">Matches</a>
+    <a href="#leagues">Leagues</a>
+    <a href="#how">How it works</a>
+  </nav>
+
+  <div>
+    <button class="btn btn-outline" id="accountBtn" onclick="openAccount()">
+      Account
+    </button>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div>
+    <span class="eyebrow">FOOTBALL INTELLIGENCE</span>
+
+    <h1>
+      Smarter match<br>
+      <span>predictions.</span>
+    </h1>
+
+    <p>
+      Explore football fixtures and model-based predictions.
+      Compare match outcomes, confidence, correct scores, goals and BTTS.
+    </p>
+
+    <a class="btn btn-primary" href="#predictions">
+      Explore predictions →
+    </a>
+  </div>
+
+  <div class="hero-card">
+    <div class="hero-head">
+      <span>GOALPREDICT</span>
+      <b>LIVE DATABASE</b>
+    </div>
+
+    <div class="hero-teams">
+      <div>
+        <div style="font-size:42px">⚽</div>
+        <strong>Football</strong>
+        <small>Home</small>
       </div>
-      <div class="hero-card">
-        <div class="hero-card-head"><span>FEATURED FORECAST</span><b>Upcoming</b></div>
-        <div class="teams">
-          <div><div class="crest">🔴</div><strong>Arsenal</strong><small>Home</small></div>
-          <div class="vs">VS</div>
-          <div><div class="crest">🔵</div><strong>Chelsea</strong><small>Away</small></div>
-        </div>
-        <div class="pick"><span>Prediction</span><strong>Arsenal Win</strong><em>72% confidence</em></div>
+
+      <div class="vs">VS</div>
+
+      <div>
+        <div style="font-size:42px">⚽</div>
+        <strong>Football</strong>
+        <small>Away</small>
       </div>
-    </section>
+    </div>
 
-    <section class="stats-strip">
-      <div><strong>2,450+</strong><span>Matches analysed</span></div>
-      <div><strong>68%</strong><span>Model accuracy*</span></div>
-      <div><strong>18</strong><span>Competitions</span></div>
-      <div><strong>24/7</strong><span>Prediction updates</span></div>
-    </section>
+    <div class="pick">
+      <span>Prediction system</span>
+      <strong>Data-driven forecasts</strong>
+      <em>Updated from Supabase</em>
+    </div>
+  </div>
+</section>
 
-    <section id="predictions" class="section">
-      <div class="section-head">
-        <div><span class="eyebrow">REAL UPCOMING FIXTURES</span><h2>Next matches & predictions</h2><small style="color:#748078">Fixtures refreshed from current competition schedules • Sep 11–14, 2026</small></div>
-        <div class="controls">
-          <select id="leagueFilter"><option value="all">All leagues</option></select>
-          <select id="marketFilter">
-            <option value="all">All markets</option>
-            <option value="1x2">Match result</option>
-            <option value="goals">Goals</option>
-            <option value="btts">BTTS</option>
-          </select>
-        </div>
-      </div>
-      <div id="matchGrid" class="match-grid"></div>
-    </section>
+<section class="stats">
+  <div>
+    <strong id="matchCount">—</strong>
+    <span>Matches in database</span>
+  </div>
 
-    <section id="leagues" class="section">
-      <div class="section-head"><div><span class="eyebrow">COMPETITIONS</span><h2>Popular leagues</h2></div></div>
-      <div class="league-grid">
-        <button class="league-card" data-league="Premier League">🏴 <span>Premier League</span><b>›</b></button>
-        <button class="league-card" data-league="La Liga">🇪🇸 <span>La Liga</span><b>›</b></button>
-        <button class="league-card" data-league="Serie A">🇮🇹 <span>Serie A</span><b>›</b></button>
-        <button class="league-card" data-league="Bundesliga">🇩🇪 <span>Bundesliga</span><b>›</b></button>
-        <button class="league-card" data-league="Champions League">⭐ <span>Champions League</span><b>›</b></button>
-      </div>
-    </section>
+  <div>
+    <strong id="predictionCount">—</strong>
+    <span>Predictions</span>
+  </div>
 
-    <section id="how" class="section how">
-      <div class="section-head"><div><span class="eyebrow">THE MODEL</span><h2>How predictions work</h2></div></div>
-      <div class="how-grid">
-        <article><span>01</span><h3>Collect data</h3><p>Recent results, scoring records, home/away form and other match statistics are collected.</p></article>
-        <article><span>02</span><h3>Calculate probabilities</h3><p>A probability model combines the available signals to estimate likely match outcomes.</p></article>
-        <article><span>03</span><h3>Explain the pick</h3><p>We show the forecast, confidence and key statistics so users can judge the prediction themselves.</p></article>
-      </div>
-    </section>
+  <div>
+    <strong>3</strong>
+    <span>Major leagues</span>
+  </div>
 
-    <section class="notice">
-      <strong>⚠ Responsible use</strong>
-      <p>Fixtures and kickoff times are real scheduled matches. Prediction picks and percentages are model estimates and are not guarantees. Football is unpredictable and this site should not be presented as a guaranteed betting or profit-making service.</p>
-    </section>
-  </main>
+  <div>
+    <strong>24/7</strong>
+    <span>Website access</span>
+  </div>
+</section>
 
-  
 <section id="predictions" class="section">
+
   <div class="section-head">
     <div>
       <span class="eyebrow">OUR PICKS</span>
-      <h2>Predictions</h2>
-      <p>Model-generated estimates for upcoming fixtures. No prediction is guaranteed.</p>
+      <h2>Football Predictions</h2>
+      <p style="color:#748078">
+        Predictions are model estimates and are not guaranteed.
+      </p>
+    </div>
+
+    <div class="controls">
+      <select id="predictionLeague">
+        <option value="all">All leagues</option>
+      </select>
     </div>
   </div>
-  <div class="prediction-grid" id="predictionGrid"></div>
+
+  <div id="predictionGrid" class="prediction-grid">
+    <div class="loading">Loading predictions...</div>
+  </div>
+
 </section>
 
-<div class="modal" id="accountModal" aria-hidden="true">
-  <div class="modal-card">
-    <button class="modal-close" onclick="closeAccount()">×</button>
-    <span class="eyebrow">GOALPREDICT ACCOUNT</span>
-    <h2>Create your account</h2>
-    <p>Save your favourite predictions and access your dashboard.</p>
-    <input id="accountName" placeholder="Your name" />
-    <input id="accountEmail" type="email" placeholder="Email address" />
-    <button class="primary-btn" onclick="createAccount()">Create account</button>
-    <div id="accountStatus"></div>
-  </div>
-</div>
-<footer>
-    <div class="brand">⚽ Goal<span>Predict</span></div>
-    <p>Data-driven football analysis. © 2026 GoalPredict.</p>
-    <small>*Demo statistic for the starter project. Replace with measured production metrics.</small>
-  </footer>
+<section id="matches" class="section">
 
-  <div id="modal" class="modal hidden">
-    <div class="modal-box">
-      <button class="modal-close" id="closeModal">×</button>
-      <div id="modalContent"></div>
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">UPCOMING FIXTURES</span>
+      <h2>Next Matches</h2>
+    </div>
+
+    <div class="controls">
+      <select id="matchLeague">
+        <option value="all">All leagues</option>
+      </select>
     </div>
   </div>
-  <script>
-const matches=[
- {id:1,league:"Premier League",date:"Sep 12",time:"15:00",home:"Aston Villa",away:"Nottingham Forest",hi:"🟣",ai:"🔴",pick:"Aston Villa Win",confidence:64,score:"2–1",goals:"Over 2.5",btts:"Yes",market:"1x2",stats:{homeForm:68,awayForm:55,homeGoals:1.8,awayGoals:1.3}},
- {id:2,league:"Premier League",date:"Sep 12",time:"15:00",home:"Chelsea",away:"Hull City",hi:"🔵",ai:"🟠",pick:"Chelsea Win",confidence:78,score:"2–0",goals:"Over 2.5",btts:"No",market:"1x2",stats:{homeForm:76,awayForm:42,homeGoals:2.0,awayGoals:0.9}},
- {id:3,league:"Premier League",date:"Sep 12",time:"15:00",home:"Liverpool",away:"Fulham",hi:"🔴",ai:"⚫",pick:"Liverpool Win",confidence:75,score:"2–1",goals:"Over 2.5",btts:"Yes",market:"1x2",stats:{homeForm:82,awayForm:58,homeGoals:2.2,awayGoals:1.2}},
- {id:4,league:"Premier League",date:"Sep 12",time:"20:00",home:"Sunderland",away:"Arsenal",hi:"🔴",ai:"🔴",pick:"Arsenal Win",confidence:73,score:"0–2",goals:"Under 3.5",btts:"No",market:"1x2",stats:{homeForm:51,awayForm:84,homeGoals:1.0,awayGoals:2.1}},
- {id:5,league:"Premier League",date:"Sep 13",time:"16:30",home:"Manchester United",away:"Manchester City",hi:"🔴",ai:"🔵",pick:"Both Teams To Score",confidence:67,score:"1–2",goals:"Over 2.5",btts:"Yes",market:"btts",stats:{homeForm:62,awayForm:86,homeGoals:1.7,awayGoals:2.4}},
- {id:6,league:"La Liga",date:"Sep 12",time:"21:00",home:"Real Madrid",away:"Rayo Vallecano",hi:"⚪",ai:"🔴",pick:"Real Madrid Win",confidence:81,score:"3–0",goals:"Over 2.5",btts:"No",market:"1x2",stats:{homeForm:88,awayForm:48,homeGoals:2.7,awayGoals:0.8}},
- {id:7,league:"La Liga",date:"Sep 13",time:"16:15",home:"Levante",away:"Barcelona",hi:"🔵",ai:"🔵",pick:"Barcelona Win",confidence:79,score:"1–3",goals:"Over 2.5",btts:"Yes",market:"1x2",stats:{homeForm:49,awayForm:87,homeGoals:1.0,awayGoals:2.6}},
- {id:8,league:"La Liga",date:"Sep 13",time:"21:00",home:"Real Sociedad",away:"Atletico Madrid",hi:"🔵",ai:"🔴",pick:"Atletico Madrid Win",confidence:61,score:"1–2",goals:"Under 3.5",btts:"Yes",market:"1x2",stats:{homeForm:65,awayForm:73,homeGoals:1.4,awayGoals:1.6}},
- {id:9,league:"Serie A",date:"Sep 12",time:"18:00",home:"Lazio",away:"AC Milan",hi:"🔵",ai:"🔴",pick:"Both Teams To Score",confidence:65,score:"1–1",goals:"Over 2.5",btts:"Yes",market:"btts",stats:{homeForm:64,awayForm:70,homeGoals:1.5,awayGoals:1.7}},
- {id:10,league:"Serie A",date:"Sep 13",time:"20:45",home:"Sassuolo",away:"Juventus",hi:"🟢",ai:"⚪",pick:"Juventus Win",confidence:70,score:"0–2",goals:"Under 3.5",btts:"No",market:"1x2",stats:{homeForm:53,awayForm:79,homeGoals:1.1,awayGoals:1.9}},
- {id:11,league:"Serie A",date:"Sep 14",time:"20:45",home:"Inter Milan",away:"Udinese",hi:"🔵",ai:"⚫",pick:"Inter Milan Win",confidence:77,score:"2–0",goals:"Over 2.5",btts:"No",market:"1x2",stats:{homeForm:84,awayForm:50,homeGoals:2.2,awayGoals:0.9}},
- {id:12,league:"Serie A",date:"Sep 14",time:"18:30",home:"Como",away:"Parma",hi:"🔵",ai:"🟡",pick:"Como Win",confidence:59,score:"2–1",goals:"Over 2.5",btts:"Yes",market:"goals",stats:{homeForm:67,awayForm:55,homeGoals:1.7,awayGoals:1.3}},
- {id:13,league:"La Liga",date:"Sep 11",time:"21:00",home:"Sevilla",away:"Valencia",hi:"⚪",ai:"🟠",pick:"Sevilla Win",confidence:57,score:"2–1",goals:"Over 2.5",btts:"Yes",market:"1x2",stats:{homeForm:61,awayForm:56,homeGoals:1.5,awayGoals:1.3}},
- {id:14,league:"Premier League",date:"Sep 14",time:"20:00",home:"Leeds United",away:"Newcastle United",hi:"⚪",ai:"⚫",pick:"Newcastle United Win",confidence:58,score:"1–2",goals:"Over 2.5",btts:"Yes",market:"goals",stats:{homeForm:55,awayForm:67,homeGoals:1.3,awayGoals:1.5}}
-];
 
-const grid=document.querySelector("#matchGrid"), league=document.querySelector("#leagueFilter"), market=document.querySelector("#marketFilter");
-[...new Set(matches.map(m=>m.league))].forEach(x=>league.insertAdjacentHTML("beforeend",`<option>${x}</option>`));
-
-function render(){
- const lf=league.value,mf=market.value;
- const list=matches.filter(m=>(lf==="all"||m.league===lf)&&(mf==="all"||m.market===mf));
- grid.innerHTML=list.map(m=>`
- <article class="match-card" data-id="${m.id}">
-  <div class="match-top"><span class="league">${m.league}</span><span>${m.date} • ${m.time}</span></div>
-  <div class="match-teams">
-   <div class="team"><span class="team-icon">${m.hi}</span><span class="team-name">${m.home}</span></div>
-   <div class="time">VS</div>
-   <div class="team"><span class="team-icon">${m.ai}</span><span class="team-name">${m.away}</span></div>
+  <div id="matchGrid" class="match-grid">
+    <div class="loading">Loading matches...</div>
   </div>
-  <div class="prediction"><div><small>Model pick</small><br><strong>${m.pick}</strong></div><span class="confidence">${m.confidence}% confidence</span></div>
- </article>`).join("") || "<p>No matches found.</p>";
- document.querySelectorAll(".match-card").forEach(c=>c.onclick=()=>openMatch(+c.dataset.id));
-}
-function openMatch(id){
- const m=matches.find(x=>x.id===id);
- document.querySelector("#modalContent").innerHTML=`
-  <span class="eyebrow">${m.league}</span><h2>${m.home} vs ${m.away}</h2>
-  <p>${m.time} • Prediction model analysis</p>
-  <div class="detail-score">${m.score}</div>
-  <h3>Primary prediction: <span style="color:#0da35a">${m.pick}</span></h3>
-  <p>Confidence: <b>${m.confidence}%</b></p>
-  <h4>Recent form</h4>
-  <div class="detail-bars"><label>${m.home}: ${m.stats.homeForm}%</label><div class="bar"><i style="width:${m.stats.homeForm}%"></i></div><label>${m.away}: ${m.stats.awayForm}%</label><div class="bar"><i style="width:${m.stats.awayForm}%"></i></div></div>
-  <p><b>Goal outlook:</b> ${m.goals} &nbsp; <b>BTTS:</b> ${m.btts}</p>
-  <small>These are model estimates for demonstration and are not guarantees.</small>`;
- document.querySelector("#modal").classList.remove("hidden");
-}
-document.querySelector("#closeModal").onclick=()=>document.querySelector("#modal").classList.add("hidden");
-document.querySelector("#modal").onclick=e=>{if(e.target.id==="modal")e.currentTarget.classList.add("hidden")};
-league.onchange=render; market.onchange=render;
-document.querySelectorAll(".league-card").forEach(b=>b.onclick=()=>{league.value=b.dataset.league;render();document.querySelector("#predictions").scrollIntoView()});
-document.querySelector("#themeBtn").onclick=()=>document.documentElement.classList.toggle("dark");
-render();
-</script>
-</body>
-</html>
+
+</section>
+
+<section id="leagues" class="section">
+
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">COMPETITIONS</span>
+      <h2>Popular leagues</h2>
+    </div>
+  </div>
+
+  <div class="league-grid">
+
+    <button class="league-card" data-league="Premier League">
+      🏴 <span>Premier League</span><b>›</b>
+    </button>
+
+    <button class="league-card" data-league="La Liga">
+      🇪🇸 <span>La Liga</span><b>›</b>
+    </button>
+
+    <button class="league-card" data-league="Serie A">
+      🇮🇹 <span>Serie A</span><b>›</b>
+    </button>
+
+    <button class="league-card" data-league="Bundesliga">
+      🇩🇪 <span>Bundesliga</span><b>›</b>
+    </button>
+
+    <button class="league-card" data-league="Champions League">
+      ⭐ <span>Champions League</span><b>›</b>
+    </button>
+
+  </div>
+</section>
+
+<section id="how" class="section">
+
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">THE MODEL</span>
+      <h2>How predictions work</h2>
+    </div>
+  </div>
+
+  <div class="how-grid">
+
+    <article>
+      <span>01</span>
+      <h3>Collect data</h3>
+      <p>
+        Recent results, scoring records, home and away form
+        and other available match information are considered.
+      </p>
+    </article>
+
+    <article>
+      <span>02</span>
+      <h3>Calculate probabilities</h3>
+      <p>
+        The prediction system estimates likely match outcomes
+        and assigns a confidence percentage.
+      </p>
+    </article>
+
+    <article>
+      <span>03</span>
+      <h3>Explain the pick</h3>
+      <p>
+        Users can see the predicted result, correct score,
+        goals market and BTTS information.
+      </p>
+    </article>
+
+  </div>
+</section>
+
+<section class="notice">
+  <strong>⚠ Responsible use</strong>
+  <p>
+    GoalPredict predictions are estimates only. Football results are
+    unpredictable and no prediction is guaranteed. Do not present
+    predictions as guaranteed betting outcomes or guaranteed profits.
+  </p>
+</section>
+
+</main>
+
+<!-- ACCOUNT MODAL -->
+
+<div class="modal" id="accountModal">
+
+  <div class="modal-card">
+
+    <button class="modal-close" onclick="closeAccount()">×</button>
+
+    <span class="eyebrow">GOALPREDICT ACCOUNT</span>
+
+    <h2 id="accountTitle">Create your account</h2>
+
+    <p id="accountIntro">
+      Create an account to save your favourite predictions.
+    </p>
+
+    <div id="authForms">
+
+      <input
+        id="accountName"
+        type="text"
+        placeholder="Full name"
+        autocomplete="name"
+      >
+
+      <input
+        id="accountEmail"
+        type="email"
+        placeholder="Email address"
+        autocomplete="email"
+      >
+
+      <input
+        id="accountPassword"
+        type="password"
+        placeholder="Password (6+ characters)"
+        autocomplete="new-password"
+      >
+
+      <button class="primary" id="authButton" onclick="signUpUser()">
+        Create account
+      </button>
+
+      <button class="secondary" id="authSwitch" onclick="showLogin()">
+        I already have an account
+      </button>
+
+    </div>
+
+    <div id="loggedInArea" class="hidden">
+
+      <p id="loggedInText"></p>
+
+      <button class="primary" onclick="showSavedPredictions()">
+        My saved predictions
+      </button>
+
+      <button class="secondary" onclick="signOutUser()">
+        Log out
+      </button>
+
+      <div id="savedList"></div>
+
+    </div>
+
+    <div id="accountStatus" class="status"></div>
+
+  </div>
+</div>
+
+<!-- MATCH DETAIL MODAL -->
+
+<div class="modal" id="matchModal">
+
+  <div class="modal-card">
+
+    <button class="modal-close" onclick="closeMatch()">×</button>
+
+    <div id="matchDetails"></div>
+
+  </div>
+</div>
+
+<footer>
+
+  <div class="brand">⚽ Goal<span>Predict</span></div>
+
+  <p>
+    Data-driven football analysis and predictions.
+  </p>
+
+  <small>
+    © 2026 GoalPredict. Predictions are estimates, not guarantees.
+  </small>
+
+</footer>
+
 <script>
-(function(){
-  const predictionGrid=document.getElementById('predictionGrid');
-  if(!predictionGrid) return;
-  function getMatches(){
-    if(typeof matches !== 'undefined') return matches;
-    if(typeof fixtures !== 'undefined') return fixtures;
-    return [];
+
+/* =========================================
+   SUPABASE CONNECTION
+========================================= */
+
+const SUPABASE_URL =
+'https://illmfiwqtbxtlnulpmvz.supabase.co';
+
+const SUPABASE_PUBLISHABLE_KEY =
+'sb_publishable_wFYZklMlgGIO8ouUwsVbEQ__zW4t-FG';
+
+const db =
+window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+
+
+/* =========================================
+   WEBSITE DATA
+========================================= */
+
+let matches = [];
+let predictions = [];
+
+
+/* =========================================
+   LOAD MATCHES
+========================================= */
+
+async function loadMatches(){
+
+  const {data,error} = await db
+    .from('matches')
+    .select('*')
+    .order('kickoff',{ascending:true});
+
+  if(error){
+
+    console.error(error);
+
+    document.getElementById('matchGrid').innerHTML =
+      '<div class="error">Unable to load matches from the database.</div>';
+
+    return;
+
   }
-  function renderPredictions(){
-    const data=getMatches();
-    predictionGrid.innerHTML=data.slice(0,20).map((m,i)=>{
-      const home=m.home || m.homeTeam || m.home_team || 'Home';
-      const away=m.away || m.awayTeam || m.away_team || 'Away';
-      const pick=m.pick || m.prediction || (i%3===0?'Home Win':i%3===1?'Draw':'Away Win');
-      const conf=m.confidence || Math.round(58+(i*3)%27)+'%';
-      const score=m.score || m.correctScore || (i%2?'2–1':'1–0');
-      const league=m.league || m.competition || 'Football';
-      return `<article class="prediction-card">
-        <div class="prediction-league">${league}</div>
-        <h3>${home} <span>vs</span> ${away}</h3>
-        <div class="prediction-row"><b>Prediction</b><strong>${pick}</strong></div>
-        <div class="prediction-row"><span>Correct score</span><strong>${score}</strong></div>
-        <div class="prediction-row"><span>Confidence</span><strong>${conf}</strong></div>
-      </article>`;
-    }).join('');
-  }
-  renderPredictions();
-})();
-function openAccount(){const m=document.getElementById('accountModal'); if(m){m.classList.add('show');m.setAttribute('aria-hidden','false');}}
-function closeAccount(){const m=document.getElementById('accountModal'); if(m){m.classList.remove('show');m.setAttribute('aria-hidden','true');}}
-function createAccount(){
-  const n=document.getElementById('accountName').value.trim();
-  const e=document.getElementById('accountEmail').value.trim();
-  const s=document.getElementById('accountStatus');
-  if(!n||!e){s.textContent='Please enter your name and email.';return;}
-  localStorage.setItem('goalpredict_account',JSON.stringify({name:n,email:e}));
-  s.textContent='Account saved on this device. A real multi-user login requires a backend/database.';
+
+  matches = data || [];
+
+  document.getElementById('matchCount').textContent =
+    matches.length;
+
+  populateLeagueFilters();
+
+  renderMatches();
 }
+
+
+/* =========================================
+   LOAD PREDICTIONS
+========================================= */
+
+async function loadPredictions(){
+
+  const {data,error} = await db
+    .from('predictions')
+    .select('*')
+    .order('created_at',{ascending:false});
+
+  if(error){
+
+    console.error(error);
+
+    document.getElementById('predictionGrid').innerHTML =
+      '<div class="error">Unable to load predictions from the database.</div>';
+
+    return;
+
+  }
+
+  predictions = data || [];
+
+  document.getElementById('predictionCount').textContent =
+    predictions.length;
+
+  renderPredictions();
+}
+
+
+/* =========================================
+   LEAGUE FILTERS
+========================================= */
+
+function populateLeagueFilters(){
+
+  const leagues = [
+    ...new Set(matches.map(m => m.league))
+  ];
+
+  const matchFilter =
+    document.getElementById('matchLeague');
+
+  const predictionFilter =
+    document.getElementById('predictionLeague');
+
+  leagues.forEach(name => {
+
+    matchFilter.insertAdjacentHTML(
+      'beforeend',
+      `<option value="${escapeHTML(name)}">
+        ${escapeHTML(name)}
+      </option>`
+    );
+
+    predictionFilter.insertAdjacentHTML(
+      'beforeend',
+      `<option value="${escapeHTML(name)}">
+        ${escapeHTML(name)}
+      </option>`
+    );
+
+  });
+}
+
+
+/* =========================================
+   RENDER PREDICTIONS
+========================================= */
+
+function renderPredictions(){
+
+  const grid =
+    document.getElementById('predictionGrid');
+
+  const filter =
+    document.getElementById('predictionLeague').value;
+
+  let list = predictions;
+
+  if(filter !== 'all'){
+
+    const ids = matches
+      .filter(m => m.league === filter)
+      .map(m => m.id);
+
+    list = predictions.filter(
+      p => ids.includes(p.match_id)
+    );
+
+  }
+
+  if(!list.length){
+
+    grid.innerHTML =
+      '<div class="loading">No predictions found.</div>';
+
+    return;
+  }
+
+  grid.innerHTML = list.map(p => {
+
+    const m =
+      matches.find(x => x.id === p.match_id);
+
+    if(!m) return '';
+
+    return `
+
+      <article class="prediction-card">
+
+        <div class="prediction-league">
+          ${escapeHTML(m.league)}
+        </div>
+
+        <h3>
+          ${escapeHTML(m.home_team)}
+          <span>vs</span>
+          ${escapeHTML(m.away_team)}
+        </h3>
+
+        <div class="prediction-row">
+          <span>Prediction</span>
+          <strong>${escapeHTML(p.prediction)}</strong>
+        </div>
+
+        <div class="prediction-row">
+          <span>Correct score</span>
+          <strong>${escapeHTML(p.correct_score || '—')}</strong>
+        </div>
+
+        <div class="prediction-row">
+          <span>Goals</span>
+          <strong>${escapeHTML(p.over_under || '—')}</strong>
+        </div>
+
+        <div class="prediction-row">
+          <span>BTTS</span>
+          <strong>${escapeHTML(p.btts || '—')}</strong>
+        </div>
+
+        <span class="confidence">
+          ${escapeHTML(String(p.confidence))}% confidence
+        </span>
+
+        <button
+          class="btn btn-primary"
+          style="width:100%;margin-top:14px"
+          onclick="savePrediction(${p.id})"
+        >
+          Save prediction
+        </button>
+
+      </article>
+
+    `;
+
+  }).join('');
+}
+
+
+/* =========================================
+   RENDER MATCHES
+========================================= */
+
+function renderMatches(){
+
+  const grid =
+    document.getElementById('matchGrid');
+
+  const filter =
+    document.getElementById('matchLeague').value;
+
+  let list = matches;
+
+  if(filter !== 'all'){
+
+    list =
+      matches.filter(
+        m => m.league === filter
+      );
+
+  }
+
+  if(!list.length){
+
+    grid.innerHTML =
+      '<div class="loading">No matches found.</div>';
+
+    return;
+  }
+
+  grid.innerHTML = list.map(m => {
+
+    const p =
+      predictions.find(
+        x => x.match_id === m.id
+      );
+
+    return `
+
+      <article
+        class="match-card"
+        onclick="openMatch(${m.id})"
+      >
+
+        <div class="match-top">
+
+          <span class="league">
+            ${escapeHTML(m.league)}
+          </span>
+
+          <span>
+            ${formatDate(m.kickoff)}
+          </span>
+
+        </div>
+
+        <div class="match-teams">
+
+          <div>
+            <div class="team-icon">⚽</div>
+            <span class="team-name">
+              ${escapeHTML(m.home_team)}
+            </span>
+          </div>
+
+          <div class="time">VS</div>
+
+          <div>
+            <div class="team-icon">⚽</div>
+            <span class="team-name">
+              ${escapeHTML(m.away_team)}
+            </span>
+          </div>
+
+        </div>
+
+        <div class="prediction-row">
+
+          <div>
+            <small>Model pick</small><br>
+
+            <strong>
+              ${p ? escapeHTML(p.prediction) : 'Pending'}
+            </strong>
+          </div>
+
+          ${
+            p
+            ?
+            `<span class="confidence">
+              ${escapeHTML(String(p.confidence))}%
+            </span>`
+            :
+            ''
+          }
+
+        </div>
+
+      </article>
+
+    `;
+
+  }).join('');
+}
+
+
+/* =========================================
+   MATCH DETAILS
+========================================= */
+
+function openMatch(id){
+
+  const match =
+    matches.find(m => m.id === id);
+
+  if(!match) return;
+
+  const prediction =
+    predictions.find(
+      p => p.match_id === id
+    );
+
+  const box =
+    document.getElementById('matchDetails');
+
+  box.innerHTML = `
+
+    <span class="eyebrow">
+      ${escapeHTML(match.league)}
+    </span>
+
+    <h2>
+      ${escapeHTML(match.home_team)}
+      vs
+      ${escapeHTML(match.away_team)}
+    </h2>
+
+    <p>
+      ${formatDate(match.kickoff)}
+    </p>
+
+    ${
+      prediction
+      ?
+      `
+
+      <div style="
+        background:#f2f8f4;
+        padding:18px;
+        border-radius:14px;
+        margin-top:20px
+      ">
+
+        <h3>Prediction</h3>
+
+        <div class="prediction-row">
+          <span>Result</span>
+          <strong>
+            ${escapeHTML(prediction.prediction)}
+          </strong>
+        </div>
+
+        <div class="prediction-row">
+          <span>Correct score</span>
+          <strong>
+            ${escapeHTML(prediction.correct_score || '—')}
+          </strong>
+        </div>
+
+        <div class="prediction-row">
+          <span>Confidence</span>
+          <strong>
+            ${escapeHTML(String(prediction.confidence))}%
+          </strong>
+        </div>
+
+        <div class="prediction-row">
+          <span>Goals</span>
+          <strong>
+            ${escapeHTML(prediction.over_under || '—')}
+          </strong>
+        </div>
+
+        <div class="prediction-row">
+          <span>BTTS</span>
+          <strong>
+            ${escapeHTML(prediction.btts || '—')}
+          </strong>
+        </div>
+
+        <p style="margin-top:18px">
+          ${escapeHTML(prediction.analysis || '')}
+        </p>
+
+        <button
+          class="primary"
+          onclick="savePrediction(${prediction.id})"
+        >
+          Save prediction
+        </button>
+
+      </div>
+
+      `
+      :
+      `<p>
+        Prediction has not been added yet.
+      </p>`
+    }
+
+    <p style="margin-top:20px;font-size:12px;color:#748078">
+      Predictions are estimates and are not guaranteed.
+    </p>
+
+  `;
+
+  document
+    .getElementById('matchModal')
+    .classList.add('show');
+}
+
+
+function closeMatch(){
+
+  document
+    .getElementById('matchModal')
+    .classList.remove('show');
+
+}
+
+
+/* =========================================
+   ACCOUNT
+========================================= */
+
+function openAccount(){
+
+  document
+    .getElementById('accountModal')
+    .classList.add('show');
+
+  refreshAccountUI();
+}
+
+
+function closeAccount(){
+
+  document
+    .getElementById('accountModal')
+    .classList.remove('show');
+
+}
+
+
+function setStatus(message,success=false){
+
+  const box =
+    document.getElementById('accountStatus');
+
+  box.textContent = message;
+
+  box.style.color =
+    success ? '#087f43' : '#b42318';
+
+}
+
+
+/* =========================================
+   SIGN UP
+========================================= */
+
+async function signUpUser(){
+
+  const name =
+    document.getElementById('accountName')
+    .value.trim();
+
+  const email =
+    document.getElementById('accountEmail')
+    .value.trim();
+
+  const password =
+    document.getElementById('accountPassword')
+    .value;
+
+  if(!name || !email || password.length < 6){
+
+    setStatus(
+      'Enter your name, email and a password of at least 6 characters.'
+    );
+
+    return;
+  }
+
+  setStatus(
+    'Creating your account...',
+    true
+  );
+
+  const {data,error} =
+    await db.auth.signUp({
+
+      email,
+      password,
+
+      options:{
+        data:{
+          full_name:name
+        }
+      }
+
+    });
+
+  if(error){
+
+    setStatus(error.message);
+
+    return;
+  }
+
+  if(data.user && data.session){
+
+    await createProfile(
+      data.user,
+      name
+    );
+
+    setStatus(
+      'Account created successfully!',
+      true
+    );
+
+    refreshAccountUI();
+
+  }else{
+
+    setStatus(
+      'Account created. Check your email to confirm your account, then log in.',
+      true
+    );
+
+    showLogin();
+
+  }
+
+}
+
+
+/* =========================================
+   CREATE PROFILE
+========================================= */
+
+async function createProfile(user,name){
+
+  if(!user) return;
+
+  const {error} =
+    await db
+      .from('profiles')
+      .upsert(
+        {
+          id:user.id,
+          full_name:name || user.user_metadata?.full_name || '',
+          role:'user'
+        },
+        {
+          onConflict:'id'
+        }
+      );
+
+  if(error){
+
+    console.warn(
+      'Profile creation:',
+      error.message
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   LOGIN
+========================================= */
+
+async function signInUser(){
+
+  const email =
+    document.getElementById('accountEmail')
+    .value.trim();
+
+  const password =
+    document.getElementById('accountPassword')
+    .value;
+
+  if(!email || !password){
+
+    setStatus(
+      'Enter your email and password.'
+    );
+
+    return;
+  }
+
+  setStatus(
+    'Logging in...',
+    true
+  );
+
+  const {data,error} =
+    await db.auth.signInWithPassword({
+      email,
+      password
+    });
+
+  if(error){
+
+    setStatus(error.message);
+
+    return;
+  }
+
+  await createProfile(
+    data.user,
+    data.user.user_metadata?.full_name || ''
+  );
+
+  setStatus(
+    'Logged in successfully.',
+    true
+  );
+
+  refreshAccountUI();
+
+}
+
+
+/* =========================================
+   LOGIN / SIGNUP SWITCH
+========================================= */
+
+function showLogin(){
+
+  document
+    .getElementById('accountName')
+    .classList.add('hidden');
+
+  document
+    .getElementById('accountTitle')
+    .textContent =
+      'Log in';
+
+  document
+    .getElementById('accountIntro')
+    .textContent =
+      'Log in to save predictions and access your account.';
+
+  const button =
+    document.getElementById('authButton');
+
+  button.textContent = 'Log in';
+  button.onclick = signInUser;
+
+  const switchButton =
+    document.getElementById('authSwitch');
+
+  switchButton.textContent =
+    'Create a new account';
+
+  switchButton.onclick =
+    showSignup;
+
+  setStatus('');
+
+}
+
+
+function showSignup(){
+
+  document
+    .getElementById('accountName')
+    .classList.remove('hidden');
+
+  document
+    .getElementById('accountTitle')
+    .textContent =
+      'Create your account';
+
+  document
+    .getElementById('accountIntro')
+    .textContent =
+      'Create an account to save predictions and access them from any device.';
+
+  const button =
+    document.getElementById('authButton');
+
+  button.textContent =
+    'Create account';
+
+  button.onclick =
+    signUpUser;
+
+  const switchButton =
+    document.getElementById('authSwitch');
+
+  switchButton.textContent =
+    'I already have an account';
+
+  switchButton.onclick =
+    showLogin;
+
+  setStatus('');
+
+}
+
+
+/* =========================================
+   ACCOUNT UI
+========================================= */
+
+async function refreshAccountUI(){
+
+  const {
+    data:{user}
+  } = await db.auth.getUser();
+
+  const authForms =
+    document.getElementById('authForms');
+
+  const loggedInArea =
+    document.getElementById('loggedInArea');
+
+  const accountButton =
+    document.getElementById('accountBtn');
+
+  if(user){
+
+    authForms.classList.add('hidden');
+
+    loggedInArea.classList.remove('hidden');
+
+    accountButton.textContent =
+      'My Account';
+
+    document.getElementById(
+      'loggedInText'
+    ).textContent =
+      `Logged in as ${user.email}`;
+
+  }else{
+
+    authForms.classList.remove('hidden');
+
+    loggedInArea.classList.add('hidden');
+
+    accountButton.textContent =
+      'Account';
+
+    showSignup();
+
+  }
+
+}
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+async function signOutUser(){
+
+  const {error} =
+    await db.auth.signOut();
+
+  if(error){
+
+    setStatus(error.message);
+
+    return;
+  }
+
+  document.getElementById(
+    'savedList'
+  ).innerHTML = '';
+
+  setStatus(
+    'You have been logged out.',
+    true
+  );
+
+  refreshAccountUI();
+
+}
+
+
+/* =========================================
+   SAVE PREDICTION
+========================================= */
+
+async function savePrediction(predictionId){
+
+  const {
+    data:{user}
+  } = await db.auth.getUser();
+
+  if(!user){
+
+    openAccount();
+
+    setStatus(
+      'Please create an account or log in before saving a prediction.'
+    );
+
+    return;
+  }
+
+  const {error} =
+    await db
+      .from('saved_predictions')
+      .upsert(
+        {
+          user_id:user.id,
+          prediction_id:predictionId
+        },
+        {
+          onConflict:'user_id,prediction_id'
+        }
+      );
+
+  if(error){
+
+    setStatus(
+      'Could not save prediction: ' +
+      error.message
+    );
+
+    openAccount();
+
+    return;
+  }
+
+  openAccount();
+
+  setStatus(
+    'Prediction saved to your account!',
+    true
+  );
+
+}
+
+
+/* =========================================
+   SHOW SAVED PREDICTIONS
+========================================= */
+
+async function showSavedPredictions(){
+
+  const box =
+    document.getElementById('savedList');
+
+  box.innerHTML =
+    '<p>Loading saved predictions...</p>';
+
+  const {
+    data:{user}
+  } = await db.auth.getUser();
+
+  if(!user){
+
+    box.innerHTML = '';
+
+    return;
+  }
+
+  const {data:saved,error} =
+    await db
+      .from('saved_predictions')
+      .select('prediction_id,created_at')
+      .eq('user_id',user.id)
+      .order('created_at',{ascending:false});
+
+  if(error){
+
+    box.innerHTML =
+      '<p>Unable to load saved predictions.</p>';
+
+    return;
+  }
+
+  if(!saved || !saved.length){
+
+    box.innerHTML =
+      '<p>You have no saved predictions yet.</p>';
+
+    return;
+  }
+
+  const ids =
+    saved.map(x => x.prediction_id);
+
+  const {data:preds} =
+    await db
+      .from('predictions')
+      .select('*')
+      .in('id',ids);
+
+  if(!preds){
+
+    box.innerHTML =
+      '<p>Unable to load saved predictions.</p>';
+
+    return;
+  }
+
+  box.innerHTML =
+    '<h3>Saved predictions</h3>' +
+
+    preds.map(p => {
+
+      const m =
+        matches.find(
+          x => x.id === p.match_id
+        );
+
+      return `
+
+        <div class="saved-item">
+
+          <strong>
+            ${escapeHTML(m?.home_team || 'Home')}
+            vs
+            ${escapeHTML(m?.away_team || 'Away')}
+          </strong>
+
+          <br>
+
+          <small>
+            ${escapeHTML(m?.league || '')}
+            •
+            ${escapeHTML(p.prediction)}
+            •
+            ${escapeHTML(String(p.confidence))}%
+            •
+            ${escapeHTML(p.correct_score || '')}
+          </small>
+
+        </div>
+
+      `;
+
+    }).join('');
+
+}
+
+
+/* =========================================
+   AUTH STATE
+========================================= */
+
+db.auth.onAuthStateChange(
+  () => {
+
+    setTimeout(
+      refreshAccountUI,
+      0
+    );
+
+  }
+);
+
+
+/* =========================================
+   FILTER EVENTS
+========================================= */
+
+document
+  .getElementById('predictionLeague')
+  .addEventListener(
+    'change',
+    renderPredictions
+  );
+
+document
+  .getElementById('matchLeague')
+  .addEventListener(
+    'change',
+    renderMatches
+  );
+
+
+/* =========================================
+   LEAGUE BUTTONS
+========================================= */
+
+document
+  .querySelectorAll('.league-card')
+  .forEach(button => {
+
+    button.addEventListener(
+      'click',
+      () => {
+
+        const name =
+          button.dataset.league;
+
+        document
+          .getElementById('matchLeague')
+          .value = name;
+
+        document
+          .getElementById('predictionLeague')
+          .value = name;
+
+        renderMatches();
+        renderPredictions();
+
+        document
+          .getElementById('predictions')
+          .scrollIntoView();
+
+      }
+    );
+
+  });
+
+
+/* =========================================
+   DATE FORMAT
+========================================= */
+
+function formatDate(value){
+
+  const date =
+    new Date(value);
+
+  return date.toLocaleString(
+    undefined,
+    {
+      weekday:'short',
+      month:'short',
+      day:'numeric',
+      hour:'2-digit',
+      minute:'2-digit'
+    }
+  );
+
+}
+
+
+/* =========================================
+   HTML SECURITY
+========================================= */
+
+function escapeHTML(value){
+
+  return String(value ?? '')
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#039;');
+
+}
+
+
+/* =========================================
+   START WEBSITE
+========================================= */
+
+async function startApp(){
+
+  await Promise.all([
+    loadMatches(),
+    loadPredictions()
+  ]);
+
+  refreshAccountUI();
+
+}
+
+startApp();
+
 </script>
+
+</body>
+                                                 </html>
