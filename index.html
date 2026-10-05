@@ -2,348 +2,407 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="GoalPredict - Football fixtures and match predictions">
 <title>GoalPredict — Football Predictions</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-*{
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f5f7f5;
-  color:#142019;
+ margin:0;
+ font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+ background:#f5f7f5;
+ color:#142019;
+ line-height:1.5
 }
-
 .topbar{
-  height:70px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 6%;
-  background:white;
-  border-bottom:1px solid #e5ebe7;
-  position:sticky;
-  top:0;
-  z-index:20;
+ height:76px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ padding:0 6%;
+ background:#fff;
+ border-bottom:1px solid #e3e9e5;
+ position:sticky;
+ top:0;
+ z-index:20
 }
-
 .brand{
-  font-size:22px;
-  font-weight:900;
-  color:#142019;
-  text-decoration:none;
+ font-size:22px;
+ font-weight:900;
+ color:#132018;
+ text-decoration:none
 }
-
-.brand span{
-  color:#0da35a;
-}
-
-nav{
-  display:flex;
-  gap:25px;
-}
-
+.brand span{color:#0da35a}
+nav{display:flex;gap:28px}
 nav a{
-  text-decoration:none;
-  color:#526159;
-  font-weight:700;
+ color:#5c6962;
+ text-decoration:none;
+ font-weight:700;
+ font-size:14px
 }
-
 .btn{
-  border:0;
-  border-radius:10px;
-  padding:11px 17px;
-  font-weight:800;
-  cursor:pointer;
+ border:0;
+ border-radius:11px;
+ padding:12px 18px;
+ font-weight:800;
+ cursor:pointer;
+ text-decoration:none;
+ display:inline-block
 }
-
 .btn-primary{
-  background:#0da35a;
-  color:white;
+ background:#0da35a;
+ color:#fff;
+ box-shadow:0 8px 22px #0da35a33
 }
-
 .btn-outline{
-  background:white;
-  border:1px solid #d5ded9;
-  color:#24332b;
+ background:#fff;
+ border:1px solid #d9e1dc;
+ color:#33423a
 }
-
 .hero{
-  max-width:1150px;
-  margin:auto;
-  padding:75px 24px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:50px;
-  align-items:center;
+ max-width:1180px;
+ margin:auto;
+ padding:75px 24px;
+ display:grid;
+ grid-template-columns:1.15fr .85fr;
+ gap:60px;
+ align-items:center
 }
-
+.eyebrow{
+ font-size:11px;
+ font-weight:900;
+ letter-spacing:2px;
+ color:#0a9a53
+}
 .hero h1{
-  font-size:58px;
-  line-height:1.05;
-  margin:15px 0;
+ font-size:60px;
+ line-height:1.03;
+ margin:14px 0 20px;
+ letter-spacing:-3px
 }
-
-.hero h1 span{
-  color:#0da35a;
-}
-
+.hero h1 span{color:#0da35a}
 .hero p{
-  color:#68756e;
-  font-size:17px;
-  max-width:580px;
+ font-size:17px;
+ color:#647169;
+ max-width:570px;
+ margin-bottom:30px
 }
-
 .hero-card{
-  background:#122019;
-  color:white;
-  border-radius:22px;
-  padding:28px;
+ background:#122019;
+ color:#fff;
+ border-radius:24px;
+ padding:27px;
+ box-shadow:0 25px 70px #13201925
 }
-
-.hero-card-title{
-  color:#65d99b;
-  font-weight:900;
-  font-size:12px;
-  letter-spacing:1px;
+.hero-head{
+ display:flex;
+ justify-content:space-between;
+ color:#9eaca4;
+ font-size:12px
 }
-
-.hero-match{
-  display:grid;
-  grid-template-columns:1fr 50px 1fr;
-  text-align:center;
-  align-items:center;
-  margin:35px 0;
+.hero-head span{color:#67d99b;font-weight:900}
+.hero-teams{
+ display:grid;
+ grid-template-columns:1fr 50px 1fr;
+ text-align:center;
+ align-items:center;
+ padding:35px 0 25px
 }
-
-.hero-team{
-  font-weight:800;
+.hero-teams strong{display:block;font-size:17px}
+.hero-teams small{color:#91a099}
+.vs{font-weight:900;color:#6e7b74}
+.pick{
+ background:#1d2d25;
+ border:1px solid #2d4036;
+ border-radius:15px;
+ padding:15px
 }
-
-.hero-vs{
-  color:#89958e;
-  font-weight:900;
+.pick span{color:#98a59f;font-size:11px}
+.pick strong{display:block;font-size:16px;margin:3px 0}
+.pick em{color:#68d99c;font-style:normal;font-size:12px}
+.stats{
+ background:#fff;
+ border-block:1px solid #e7ece8;
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ padding:25px 8%;
+ text-align:center
 }
-
-.hero-pick{
-  background:#1e3027;
-  padding:16px;
-  border-radius:14px;
-}
-
-.hero-pick small{
-  color:#9ca9a2;
-}
-
-.hero-pick strong{
-  display:block;
-  margin-top:5px;
-  color:#70dfa3;
-}
+.stats div{border-right:1px solid #e5ebe7}
+.stats div:last-child{border:0}
+.stats strong{display:block;font-size:25px}
+.stats span{color:#748078;font-size:12px}
 
 .section{
-  max-width:1150px;
-  margin:auto;
-  padding:65px 24px;
+ max-width:1180px;
+ margin:auto;
+ padding:70px 24px 20px
 }
-
-.section-title{
-  margin-bottom:30px;
+.section-head{
+ display:flex;
+ align-items:end;
+ justify-content:space-between;
+ margin-bottom:28px
 }
-
-.section-title h2{
-  font-size:34px;
-  margin:7px 0;
+.section-head h2{
+ margin:6px 0;
+ font-size:34px;
+ letter-spacing:-1px
 }
-
-.eyebrow{
-  color:#0da35a;
-  font-weight:900;
-  font-size:12px;
-  letter-spacing:2px;
+.controls{display:flex;gap:10px}
+select{
+ border:1px solid #dce4df;
+ background:#fff;
+ padding:11px 14px;
+ border-radius:10px;
+ color:#35433b
 }
-
-.notice{
-  background:#fff8e6;
-  border:1px solid #f0dfad;
-  padding:16px 20px;
-  border-radius:14px;
-  max-width:1100px;
-  margin:20px auto 60px;
+.prediction-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:17px
 }
-
-.notice p{
-  margin:5px 0;
-  font-size:13px;
+.prediction-card{
+ background:#fff;
+ border:1px solid #e2e9e4;
+ border-radius:18px;
+ padding:20px;
+ transition:.2s
 }
-
-.status{
-  text-align:center;
-  padding:25px;
-  color:#69766f;
+.prediction-card:hover{
+ transform:translateY(-3px);
+ box-shadow:0 12px 30px #14201912
 }
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:18px;
+.prediction-league{
+ font-size:11px;
+ letter-spacing:1.5px;
+ font-weight:900;
+ color:#0a9a53;
+ text-transform:uppercase
 }
-
-.card{
-  background:white;
-  border:1px solid #e0e8e3;
-  border-radius:18px;
-  padding:20px;
+.prediction-card h3{
+ margin:10px 0 18px;
+ font-size:18px
 }
-
-.league{
-  color:#0b914e;
-  font-weight:900;
-  font-size:12px;
-  letter-spacing:1px;
+.prediction-card h3 span{
+ color:#89948e;
+ font-weight:400
 }
-
-.match-time{
-  color:#78847d;
-  font-size:12px;
-  margin-top:6px;
-}
-
-.teams{
-  display:grid;
-  grid-template-columns:1fr 40px 1fr;
-  align-items:center;
-  text-align:center;
-  margin:25px 0;
-}
-
-.team{
-  font-weight:900;
-}
-
-.vs{
-  color:#7c8781;
-  font-size:12px;
-  font-weight:900;
-}
-
 .prediction-row{
-  display:flex;
-  justify-content:space-between;
-  border-top:1px solid #edf0ee;
-  padding:10px 0;
+ display:flex;
+ justify-content:space-between;
+ padding:10px 0;
+ border-top:1px solid #edf0ee;
+ font-size:14px
 }
-
-.prediction{
-  color:#087f43;
-  font-weight:900;
-}
-
+.prediction-row strong{color:#087f43}
 .confidence{
-  display:inline-block;
-  background:#e8f8ef;
-  color:#087f43;
-  border-radius:20px;
-  padding:5px 9px;
-  font-size:12px;
-  font-weight:900;
+ display:inline-block;
+ background:#e9f8f0;
+ color:#087f43;
+ border-radius:20px;
+ padding:6px 9px;
+ font-size:12px;
+ font-weight:800;
+ margin-top:8px
 }
-
-.analysis{
-  color:#69756e;
-  font-size:13px;
-  margin-top:10px;
+.match-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:15px
 }
-
-.full-btn{
-  width:100%;
-  margin-top:12px;
+.match-card{
+ background:#fff;
+ border:1px solid #e2e9e4;
+ border-radius:17px;
+ padding:20px;
+ cursor:pointer
 }
-
-footer{
-  background:#122019;
-  color:#aebbb4;
-  padding:40px 7%;
+.match-top{
+ display:flex;
+ justify-content:space-between;
+ color:#77827c;
+ font-size:11px
 }
-
-footer .brand{
-  color:white;
+.league{font-weight:800;color:#44534b}
+.match-teams{
+ display:grid;
+ grid-template-columns:1fr 50px 1fr;
+ text-align:center;
+ align-items:center;
+ padding:20px 0
 }
-
-footer small{
-  color:#77867e;
+.team-name{
+ display:block;
+ font-weight:800;
+ margin-top:5px
 }
+.team-icon{font-size:27px}
+.time{font-weight:900;font-size:13px;color:#68746d}
+.league-grid{
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
+ gap:12px
+}
+.league-card{
+ border:1px solid #e1e8e3;
+ background:#fff;
+ border-radius:15px;
+ padding:20px 16px;
+ display:flex;
+ align-items:center;
+ gap:10px;
+ font-weight:800;
+ cursor:pointer;
+ text-align:left
+}
+.league-card b{margin-left:auto;color:#8b9690}
+.how-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:16px
+}
+.how-grid article{
+ background:#fff;
+ border:1px solid #e2e9e4;
+ border-radius:18px;
+ padding:25px
+}
+.how-grid article>span{
+ font-size:12px;
+ font-weight:900;
+ color:#0da35a
+}
+.how-grid h3{margin:12px 0 6px}
+.how-grid p{color:#69756e;font-size:14px}
+.notice{
+ max-width:1132px;
+ margin:30px auto 70px;
+ background:#fff9e9;
+ border:1px solid #f0dfad;
+ border-radius:15px;
+ padding:18px 22px;
+ color:#5f512c
+}
+.notice strong{display:block}
+.notice p{margin:4px 0;font-size:13px}
 
 .modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.65);
-  z-index:100;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
+ display:none;
+ position:fixed;
+ inset:0;
+ background:#09110dcc;
+ z-index:9999;
+ align-items:center;
+ justify-content:center;
+ padding:20px
 }
-
-.modal.show{
-  display:flex;
-}
-
+.modal.show{display:flex}
 .modal-card{
-  position:relative;
-  width:100%;
-  max-width:430px;
-  background:white;
-  border-radius:20px;
-  padding:28px;
+ width:min(500px,100%);
+ max-height:90vh;
+ overflow:auto;
+ background:#fff;
+ border-radius:20px;
+ padding:28px;
+ position:relative
 }
-
-.close{
-  position:absolute;
-  right:15px;
-  top:10px;
-  border:0;
-  background:none;
-  font-size:28px;
-  cursor:pointer;
+.modal-close{
+ position:absolute;
+ right:15px;
+ top:10px;
+ border:0;
+ background:none;
+ font-size:28px;
+ cursor:pointer
 }
-
-.input{
-  width:100%;
-  padding:13px;
-  border:1px solid #ccd6d0;
-  border-radius:10px;
-  margin:7px 0;
+.modal-card input{
+ display:block;
+ width:100%;
+ padding:13px;
+ margin:12px 0;
+ border:1px solid #cfd8d2;
+ border-radius:10px;
+ font-size:15px
 }
-
-.hidden{
-  display:none!important;
+.primary{
+ width:100%;
+ background:#0da35a;
+ color:#fff;
+ border:0;
+ border-radius:11px;
+ padding:13px;
+ font-weight:800;
+ cursor:pointer
 }
+.secondary{
+ width:100%;
+ background:#fff;
+ color:#33423a;
+ border:1px solid #d9e1dc;
+ border-radius:11px;
+ padding:13px;
+ font-weight:800;
+ cursor:pointer;
+ margin-top:10px
+}
+.status{
+ margin-top:12px;
+ font-size:13px
+}
+.saved-item{
+ padding:12px 0;
+ border-top:1px solid #e2e7e4
+}
+.hidden{display:none!important}
+.loading{
+ text-align:center;
+ padding:40px;
+ color:#718078
+}
+.error{
+ background:#fff0f0;
+ color:#a32929;
+ border:1px solid #efcaca;
+ padding:15px;
+ border-radius:12px
+}
+footer{
+ padding:40px 7%;
+ background:#122019;
+ color:#aab7b0
+}
+footer .brand{color:#fff}
+footer p{font-size:13px}
 
-@media(max-width:800px){
-
-  nav{
-    display:none;
-  }
-
-  .hero{
-    grid-template-columns:1fr;
-    padding-top:45px;
-  }
-
-  .hero h1{
-    font-size:44px;
-  }
+@media(max-width:850px){
+ nav{display:none}
+ .hero{
+  grid-template-columns:1fr;
+  padding-top:55px
+ }
+ .hero h1{font-size:48px}
+ .prediction-grid{grid-template-columns:1fr}
+ .match-grid{grid-template-columns:1fr}
+ .league-grid{grid-template-columns:1fr 1fr}
+ .how-grid{grid-template-columns:1fr}
+ .stats{
+  grid-template-columns:repeat(2,1fr);
+  gap:20px
+ }
+ .stats div:nth-child(2){border:0}
+ .section-head{display:block}
+ .controls{margin-top:18px}
+}
+@media(max-width:480px){
+ .hero h1{font-size:41px}
+ .league-grid{grid-template-columns:1fr}
+ .stats{padding:25px 5%}
+ .match-teams{grid-template-columns:1fr 35px 1fr}
 }
 </style>
 </head>
@@ -351,301 +410,284 @@ footer small{
 <body>
 
 <header class="topbar">
-
-  <a href="#" class="brand">
-    ⚽ Goal<span>Predict</span>
-  </a>
+  <a class="brand" href="#">⚽ Goal<span>Predict</span></a>
 
   <nav>
-    <a href="#matches">Matches</a>
     <a href="#predictions">Predictions</a>
+    <a href="#matches">Matches</a>
+    <a href="#leagues">Leagues</a>
     <a href="#how">How it works</a>
   </nav>
 
-  <button class="btn btn-outline" onclick="openAccount()">
-    Account
-  </button>
-
+  <div>
+    <button class="btn btn-outline" id="accountBtn" onclick="openAccount()">
+      Account
+    </button>
+  </div>
 </header>
-
 
 <main>
 
 <section class="hero">
-
   <div>
-
-    <div class="eyebrow">
-      FOOTBALL INTELLIGENCE
-    </div>
+    <span class="eyebrow">FOOTBALL INTELLIGENCE</span>
 
     <h1>
-      Smarter football
+      Smarter match<br>
       <span>predictions.</span>
     </h1>
 
     <p>
-      Real upcoming football fixtures with model-generated
-      predictions based on recent team results and goal data.
+      Explore football fixtures and model-based predictions.
+      Compare match outcomes, confidence, correct scores, goals and BTTS.
     </p>
 
-    <a href="#predictions" class="btn btn-primary">
-      View predictions →
+    <a class="btn btn-primary" href="#predictions">
+      Explore predictions →
     </a>
-
   </div>
-
 
   <div class="hero-card">
-
-    <div class="hero-card-title">
-      LIVE PREDICTION SYSTEM
+    <div class="hero-head">
+      <span>GOALPREDICT</span>
+      <b>LIVE DATABASE</b>
     </div>
 
-    <div class="hero-match">
-
-      <div class="hero-team">
-        ⚽<br>
-        Upcoming
+    <div class="hero-teams">
+      <div>
+        <div style="font-size:42px">⚽</div>
+        <strong>Football</strong>
+        <small>Home</small>
       </div>
 
-      <div class="hero-vs">
-        VS
-      </div>
+      <div class="vs">VS</div>
 
-      <div class="hero-team">
-        ⚽<br>
-        Matches
+      <div>
+        <div style="font-size:42px">⚽</div>
+        <strong>Football</strong>
+        <small>Away</small>
       </div>
-
     </div>
 
-    <div class="hero-pick">
-
-      <small>
-        Prediction engine
-      </small>
-
-      <strong>
-        Recent-form goals model
-      </strong>
-
+    <div class="pick">
+      <span>Prediction system</span>
+      <strong>Data-driven forecasts</strong>
+      <em>Updated from Supabase</em>
     </div>
-
   </div>
-
 </section>
 
-
-<section id="matches" class="section">
-
-  <div class="section-title">
-
-    <div class="eyebrow">
-      LIVE FIXTURES
-    </div>
-
-    <h2>
-      Upcoming matches
-    </h2>
-
-    <p>
-      Only future scheduled matches are displayed.
-    </p>
-
+<section class="stats">
+  <div>
+    <strong id="matchCount">—</strong>
+    <span>Matches in database</span>
   </div>
 
-  <div id="matchStatus" class="status">
-    Loading upcoming matches...
+  <div>
+    <strong id="predictionCount">—</strong>
+    <span>Predictions</span>
   </div>
 
-  <div id="matchCards" class="cards"></div>
+  <div>
+    <strong>3</strong>
+    <span>Major leagues</span>
+  </div>
 
+  <div>
+    <strong>24/7</strong>
+    <span>Website access</span>
+  </div>
 </section>
-
 
 <section id="predictions" class="section">
 
-  <div class="section-title">
-
-    <div class="eyebrow">
-      MODEL PICKS
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">OUR PICKS</span>
+      <h2>Football Predictions</h2>
+      <p style="color:#748078">
+        Predictions are model estimates and are not guaranteed.
+      </p>
     </div>
 
-    <h2>
-      Predictions
-    </h2>
-
-    <p>
-      Predictions are estimates based on recent match data.
-    </p>
-
+    <div class="controls">
+      <select id="predictionLeague">
+        <option value="all">All leagues</option>
+      </select>
+    </div>
   </div>
 
-  <div id="predictionStatus" class="status">
-    Loading predictions...
+  <div id="predictionGrid" class="prediction-grid">
+    <div class="loading">Loading predictions...</div>
   </div>
-
-  <div id="predictionCards" class="cards"></div>
 
 </section>
 
+<section id="matches" class="section">
+
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">UPCOMING FIXTURES</span>
+      <h2>Next Matches</h2>
+    </div>
+
+    <div class="controls">
+      <select id="matchLeague">
+        <option value="all">All leagues</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="matchGrid" class="match-grid">
+    <div class="loading">Loading matches...</div>
+  </div>
+
+</section>
+
+<section id="leagues" class="section">
+
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">COMPETITIONS</span>
+      <h2>Popular leagues</h2>
+    </div>
+  </div>
+
+  <div class="league-grid">
+
+    <button class="league-card" data-league="Premier League">
+      🏴 <span>Premier League</span><b>›</b>
+    </button>
+
+    <button class="league-card" data-league="La Liga">
+      🇪🇸 <span>La Liga</span><b>›</b>
+    </button>
+
+    <button class="league-card" data-league="Serie A">
+      🇮🇹 <span>Serie A</span><b>›</b>
+    </button>
+
+    <button class="league-card" data-league="Bundesliga">
+      🇩🇪 <span>Bundesliga</span><b>›</b>
+    </button>
+
+    <button class="league-card" data-league="Champions League">
+      ⭐ <span>Champions League</span><b>›</b>
+    </button>
+
+  </div>
+</section>
 
 <section id="how" class="section">
 
-  <div class="section-title">
-
-    <div class="eyebrow">
-      THE MODEL
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">THE MODEL</span>
+      <h2>How predictions work</h2>
     </div>
-
-    <h2>
-      How predictions work
-    </h2>
-
   </div>
 
-  <div class="cards">
+  <div class="how-grid">
 
-    <div class="card">
-      <h3>01. Recent results</h3>
+    <article>
+      <span>01</span>
+      <h3>Collect data</h3>
       <p>
-        The system analyzes recent finished matches for the teams.
+        Recent results, scoring records, home and away form
+        and other available match information are considered.
       </p>
-    </div>
+    </article>
 
-    <div class="card">
-      <h3>02. Goal statistics</h3>
+    <article>
+      <span>02</span>
+      <h3>Calculate probabilities</h3>
       <p>
-        Goals scored, goals conceded, home and away performance
-        are used to estimate expected goals.
+        The prediction system estimates likely match outcomes
+        and assigns a confidence percentage.
       </p>
-    </div>
+    </article>
 
-    <div class="card">
-      <h3>03. Prediction</h3>
+    <article>
+      <span>03</span>
+      <h3>Explain the pick</h3>
       <p>
-        The model produces a prediction, confidence level and
-        estimated correct score.
+        Users can see the predicted result, correct score,
+        goals market and BTTS information.
       </p>
-    </div>
+    </article>
 
   </div>
-
 </section>
 
-
-<div class="notice">
-
+<section class="notice">
   <strong>⚠ Responsible use</strong>
-
   <p>
-    Predictions are model estimates and are not guarantees.
-    Football results are unpredictable. Data provided by
-    football-data.org.
+    GoalPredict predictions are estimates only. Football results are
+    unpredictable and no prediction is guaranteed. Do not present
+    predictions as guaranteed betting outcomes or guaranteed profits.
   </p>
-
-</div>
+</section>
 
 </main>
 
-
-<footer>
-
-  <div class="brand">
-    ⚽ Goal<span>Predict</span>
-  </div>
-
-  <p>
-    Data-driven football analysis.
-  </p>
-
-  <small>
-    Data provided by football-data.org.
-  </small>
-
-</footer>
-
-
 <!-- ACCOUNT MODAL -->
 
-<div id="accountModal" class="modal">
+<div class="modal" id="accountModal">
 
   <div class="modal-card">
 
-    <button class="close" onclick="closeAccount()">
-      ×
-    </button>
+    <button class="modal-close" onclick="closeAccount()">×</button>
 
-    <div class="eyebrow">
-      GOALPREDICT ACCOUNT
-    </div>
+    <span class="eyebrow">GOALPREDICT ACCOUNT</span>
 
-    <h2 id="accountTitle">
-      Create your account
-    </h2>
+    <h2 id="accountTitle">Create your account</h2>
 
     <p id="accountIntro">
-      Create an account to save predictions.
+      Create an account to save your favourite predictions.
     </p>
-
 
     <div id="authForms">
 
       <input
         id="accountName"
-        class="input"
+        type="text"
         placeholder="Full name"
+        autocomplete="name"
       >
 
       <input
         id="accountEmail"
-        class="input"
         type="email"
         placeholder="Email address"
+        autocomplete="email"
       >
 
       <input
         id="accountPassword"
-        class="input"
         type="password"
-        placeholder="Password"
+        placeholder="Password (6+ characters)"
+        autocomplete="new-password"
       >
 
-      <button
-        id="authButton"
-        class="btn btn-primary full-btn"
-        onclick="signUpUser()"
-      >
+      <button class="primary" id="authButton" onclick="signUpUser()">
         Create account
       </button>
 
-      <button
-        id="authSwitch"
-        class="btn btn-outline full-btn"
-        onclick="showLogin()"
-      >
+      <button class="secondary" id="authSwitch" onclick="showLogin()">
         I already have an account
       </button>
 
     </div>
 
+    <div id="loggedInArea" class="hidden">
 
-    <div id="loggedIn" class="hidden">
+      <p id="loggedInText"></p>
 
-      <p id="loggedText"></p>
-
-      <button
-        class="btn btn-primary full-btn"
-        onclick="showSavedPredictions()"
-      >
+      <button class="primary" onclick="showSavedPredictions()">
         My saved predictions
       </button>
 
-      <button
-        class="btn btn-outline full-btn"
-        onclick="signOutUser()"
-      >
+      <button class="secondary" onclick="signOutUser()">
         Log out
       </button>
 
@@ -653,356 +695,501 @@ footer small{
 
     </div>
 
-
-    <div id="accountStatus"></div>
+    <div id="accountStatus" class="status"></div>
 
   </div>
-
 </div>
 
+<!-- MATCH DETAIL MODAL -->
+
+<div class="modal" id="matchModal">
+
+  <div class="modal-card">
+
+    <button class="modal-close" onclick="closeMatch()">×</button>
+
+    <div id="matchDetails"></div>
+
+  </div>
+</div>
+
+<footer>
+
+  <div class="brand">⚽ Goal<span>Predict</span></div>
+
+  <p>
+    Data-driven football analysis and predictions.
+  </p>
+
+  <small>
+    © 2026 GoalPredict. Predictions are estimates, not guarantees.
+  </small>
+
+</footer>
 
 <script>
 
-/* ==============================
-   SUPABASE
-============================== */
+/* =========================================
+   SUPABASE CONNECTION
+========================================= */
 
 const SUPABASE_URL =
-  "https://illmfiwqtbxtlnulpmvz.supabase.co";
+'https://illmfiwqtbxtlnulpmvz.supabase.co';
 
 const SUPABASE_PUBLISHABLE_KEY =
-  "sb_publishable_wFYZklMlgGIO8ouUwsVbEQ__zW4t-FG";
+'sb_publishable_wFYZklMlgGIO8ouUwsVbEQ__zW4t-FG';
 
-const sb =
-  window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-  );
+const db =
+window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
 
 
-/* ==============================
-   LOAD LIVE PREDICTIONS
-============================== */
+/* =========================================
+   WEBSITE DATA
+========================================= */
 
-async function loadPredictions(){
+let matches = [];
+let predictions = [];
 
-  const status =
-    document.getElementById("predictionStatus");
 
-  const box =
-    document.getElementById("predictionCards");
-
-  const now =
-    new Date().toISOString();
-
-
-  const {data,error} =
-    await sb
-      .from("predictions")
-      .select(`
-        id,
-        match_id,
-        prediction,
-        confidence,
-        correct_score,
-        over_under,
-        btts,
-        analysis,
-        matches!inner(
-          home_team,
-          away_team,
-          league,
-          kickoff,
-          status
-        )
-      `)
-      .eq("matches.status","scheduled")
-      .gt("matches.kickoff",now)
-      .order("kickoff",{
-        ascending:true,
-        referencedTable:"matches"
-      })
-      .limit(50);
-
-
-  if(error){
-
-    console.error(error);
-
-    status.textContent =
-      "Unable to load predictions.";
-
-    return;
-  }
-
-
-  if(!data || data.length === 0){
-
-    status.textContent =
-      "No upcoming predictions available.";
-
-    box.innerHTML = "";
-
-    return;
-  }
-
-
-  status.textContent =
-    `${data.length} upcoming predictions`;
-
-
-  box.innerHTML =
-    data.map(p => {
-
-      const m =
-        p.matches || {};
-
-      const kickoff =
-        new Date(m.kickoff)
-          .toLocaleString();
-
-
-      return `
-
-        <article class="card">
-
-          <div class="league">
-            ${escapeHtml(m.league || "Football")}
-          </div>
-
-          <div class="match-time">
-            ${kickoff}
-          </div>
-
-          <div class="teams">
-
-            <div class="team">
-              ⚽<br>
-              ${escapeHtml(m.home_team || "Home")}
-            </div>
-
-            <div class="vs">
-              VS
-            </div>
-
-            <div class="team">
-              ⚽<br>
-              ${escapeHtml(m.away_team || "Away")}
-            </div>
-
-          </div>
-
-
-          <div class="prediction-row">
-
-            <span>
-              Prediction
-            </span>
-
-            <strong class="prediction">
-              ${escapeHtml(p.prediction || "Pending")}
-            </strong>
-
-          </div>
-
-
-          <div class="prediction-row">
-
-            <span>
-              Confidence
-            </span>
-
-            <span class="confidence">
-              ${p.confidence || 0}%
-            </span>
-
-          </div>
-
-
-          <div class="prediction-row">
-
-            <span>
-              Correct score
-            </span>
-
-            <strong>
-              ${escapeHtml(p.correct_score || "—")}
-            </strong>
-
-          </div>
-
-
-          <div class="prediction-row">
-
-            <span>
-              Goals
-            </span>
-
-            <strong>
-              ${escapeHtml(p.over_under || "—")}
-            </strong>
-
-          </div>
-
-
-          <div class="prediction-row">
-
-            <span>
-              BTTS
-            </span>
-
-            <strong>
-              ${escapeHtml(p.btts || "—")}
-            </strong>
-
-          </div>
-
-
-          <div class="analysis">
-
-            ${escapeHtml(p.analysis || "")}
-
-          </div>
-
-
-          <button
-            class="btn btn-primary full-btn"
-            onclick="savePrediction(${p.match_id})"
-          >
-            Save prediction
-          </button>
-
-        </article>
-
-      `;
-
-    }).join("");
-
-}
-
-
-/* ==============================
+/* =========================================
    LOAD MATCHES
-============================== */
+========================================= */
 
 async function loadMatches(){
 
-  const status =
-    document.getElementById("matchStatus");
-
-  const box =
-    document.getElementById("matchCards");
-
-  const now =
-    new Date().toISOString();
-
-
-  const {data,error} =
-    await sb
-      .from("matches")
-      .select(`
-        id,
-        league,
-        home_team,
-        away_team,
-        kickoff,
-        status
-      `)
-      .eq("status","scheduled")
-      .gt("kickoff",now)
-      .order("kickoff",{ascending:true})
-      .limit(50);
-
+  const {data,error} = await db
+    .from('matches')
+    .select('*')
+    .order('kickoff',{ascending:true});
 
   if(error){
 
     console.error(error);
 
-    status.textContent =
-      "Unable to load matches.";
+    document.getElementById('matchGrid').innerHTML =
+      '<div class="error">Unable to load matches from the database.</div>';
+
+    return;
+
+  }
+
+  matches = data || [];
+
+  document.getElementById('matchCount').textContent =
+    matches.length;
+
+  populateLeagueFilters();
+
+  renderMatches();
+}
+
+
+/* =========================================
+   LOAD PREDICTIONS
+========================================= */
+
+async function loadPredictions(){
+
+  const {data,error} = await db
+    .from('predictions')
+    .select('*')
+    .order('created_at',{ascending:false});
+
+  if(error){
+
+    console.error(error);
+
+    document.getElementById('predictionGrid').innerHTML =
+      '<div class="error">Unable to load predictions from the database.</div>';
+
+    return;
+
+  }
+
+  predictions = data || [];
+
+  document.getElementById('predictionCount').textContent =
+    predictions.length;
+
+  renderPredictions();
+}
+
+
+/* =========================================
+   LEAGUE FILTERS
+========================================= */
+
+function populateLeagueFilters(){
+
+  const leagues = [
+    ...new Set(matches.map(m => m.league))
+  ];
+
+  const matchFilter =
+    document.getElementById('matchLeague');
+
+  const predictionFilter =
+    document.getElementById('predictionLeague');
+
+  leagues.forEach(name => {
+
+    matchFilter.insertAdjacentHTML(
+      'beforeend',
+      `<option value="${escapeHTML(name)}">
+        ${escapeHTML(name)}
+      </option>`
+    );
+
+    predictionFilter.insertAdjacentHTML(
+      'beforeend',
+      `<option value="${escapeHTML(name)}">
+        ${escapeHTML(name)}
+      </option>`
+    );
+
+  });
+}
+
+
+/* =========================================
+   RENDER PREDICTIONS
+========================================= */
+
+function renderPredictions(){
+
+  const grid =
+    document.getElementById('predictionGrid');
+
+  const filter =
+    document.getElementById('predictionLeague').value;
+
+  let list = predictions;
+
+  if(filter !== 'all'){
+
+    const ids = matches
+      .filter(m => m.league === filter)
+      .map(m => m.id);
+
+    list = predictions.filter(
+      p => ids.includes(p.match_id)
+    );
+
+  }
+
+  if(!list.length){
+
+    grid.innerHTML =
+      '<div class="loading">No predictions found.</div>';
 
     return;
   }
 
+  grid.innerHTML = list.map(p => {
 
-  if(!data || data.length === 0){
+    const m =
+      matches.find(x => x.id === p.match_id);
 
-    status.textContent =
-      "No upcoming matches available.";
+    if(!m) return '';
 
-    box.innerHTML = "";
+    return `
+
+      <article class="prediction-card">
+
+        <div class="prediction-league">
+          ${escapeHTML(m.league)}
+        </div>
+
+        <h3>
+          ${escapeHTML(m.home_team)}
+          <span>vs</span>
+          ${escapeHTML(m.away_team)}
+        </h3>
+
+        <div class="prediction-row">
+          <span>Prediction</span>
+          <strong>${escapeHTML(p.prediction)}</strong>
+        </div>
+
+        <div class="prediction-row">
+          <span>Correct score</span>
+          <strong>${escapeHTML(p.correct_score || '—')}</strong>
+        </div>
+
+        <div class="prediction-row">
+          <span>Goals</span>
+          <strong>${escapeHTML(p.over_under || '—')}</strong>
+        </div>
+
+        <div class="prediction-row">
+          <span>BTTS</span>
+          <strong>${escapeHTML(p.btts || '—')}</strong>
+        </div>
+
+        <span class="confidence">
+          ${escapeHTML(String(p.confidence))}% confidence
+        </span>
+
+        <button
+          class="btn btn-primary"
+          style="width:100%;margin-top:14px"
+          onclick="savePrediction(${p.id})"
+        >
+          Save prediction
+        </button>
+
+      </article>
+
+    `;
+
+  }).join('');
+}
+
+
+/* =========================================
+   RENDER MATCHES
+========================================= */
+
+function renderMatches(){
+
+  const grid =
+    document.getElementById('matchGrid');
+
+  const filter =
+    document.getElementById('matchLeague').value;
+
+  let list = matches;
+
+  if(filter !== 'all'){
+
+    list =
+      matches.filter(
+        m => m.league === filter
+      );
+
+  }
+
+  if(!list.length){
+
+    grid.innerHTML =
+      '<div class="loading">No matches found.</div>';
 
     return;
   }
 
+  grid.innerHTML = list.map(m => {
 
-  status.textContent =
-    `${data.length} upcoming matches`;
+    const p =
+      predictions.find(
+        x => x.match_id === m.id
+      );
 
+    return `
 
-  box.innerHTML =
-    data.map(m => {
+      <article
+        class="match-card"
+        onclick="openMatch(${m.id})"
+      >
 
-      return `
+        <div class="match-top">
 
-        <article class="card">
+          <span class="league">
+            ${escapeHTML(m.league)}
+          </span>
 
-          <div class="league">
-            ${escapeHtml(m.league || "Football")}
-          </div>
+          <span>
+            ${formatDate(m.kickoff)}
+          </span>
 
-          <div class="match-time">
-            ${new Date(m.kickoff).toLocaleString()}
-          </div>
+        </div>
 
-          <div class="teams">
+        <div class="match-teams">
 
-            <div class="team">
-              ⚽<br>
-              ${escapeHtml(m.home_team)}
-            </div>
-
-            <div class="vs">
-              VS
-            </div>
-
-            <div class="team">
-              ⚽<br>
-              ${escapeHtml(m.away_team)}
-            </div>
-
-          </div>
-
-          <div class="prediction-row">
-
-            <span>
-              Status
+          <div>
+            <div class="team-icon">⚽</div>
+            <span class="team-name">
+              ${escapeHTML(m.home_team)}
             </span>
+          </div>
+
+          <div class="time">VS</div>
+
+          <div>
+            <div class="team-icon">⚽</div>
+            <span class="team-name">
+              ${escapeHTML(m.away_team)}
+            </span>
+          </div>
+
+        </div>
+
+        <div class="prediction-row">
+
+          <div>
+            <small>Model pick</small><br>
 
             <strong>
-              Upcoming
+              ${p ? escapeHTML(p.prediction) : 'Pending'}
             </strong>
-
           </div>
 
-        </article>
+          ${
+            p
+            ?
+            `<span class="confidence">
+              ${escapeHTML(String(p.confidence))}%
+            </span>`
+            :
+            ''
+          }
 
-      `;
+        </div>
 
-    }).join("");
+      </article>
+
+    `;
+
+  }).join('');
+}
+
+
+/* =========================================
+   MATCH DETAILS
+========================================= */
+
+function openMatch(id){
+
+  const match =
+    matches.find(m => m.id === id);
+
+  if(!match) return;
+
+  const prediction =
+    predictions.find(
+      p => p.match_id === id
+    );
+
+  const box =
+    document.getElementById('matchDetails');
+
+  box.innerHTML = `
+
+    <span class="eyebrow">
+      ${escapeHTML(match.league)}
+    </span>
+
+    <h2>
+      ${escapeHTML(match.home_team)}
+      vs
+      ${escapeHTML(match.away_team)}
+    </h2>
+
+    <p>
+      ${formatDate(match.kickoff)}
+    </p>
+
+    ${
+      prediction
+      ?
+      `
+
+      <div style="
+        background:#f2f8f4;
+        padding:18px;
+        border-radius:14px;
+        margin-top:20px
+      ">
+
+        <h3>Prediction</h3>
+
+        <div class="prediction-row">
+          <span>Result</span>
+          <strong>
+            ${escapeHTML(prediction.prediction)}
+          </strong>
+        </div>
+
+        <div class="prediction-row">
+          <span>Correct score</span>
+          <strong>
+            ${escapeHTML(prediction.correct_score || '—')}
+          </strong>
+        </div>
+
+        <div class="prediction-row">
+          <span>Confidence</span>
+          <strong>
+            ${escapeHTML(String(prediction.confidence))}%
+          </strong>
+        </div>
+
+        <div class="prediction-row">
+          <span>Goals</span>
+          <strong>
+            ${escapeHTML(prediction.over_under || '—')}
+          </strong>
+        </div>
+
+        <div class="prediction-row">
+          <span>BTTS</span>
+          <strong>
+            ${escapeHTML(prediction.btts || '—')}
+          </strong>
+        </div>
+
+        <p style="margin-top:18px">
+          ${escapeHTML(prediction.analysis || '')}
+        </p>
+
+        <button
+          class="primary"
+          onclick="savePrediction(${prediction.id})"
+        >
+          Save prediction
+        </button>
+
+      </div>
+
+      `
+      :
+      `<p>
+        Prediction has not been added yet.
+      </p>`
+    }
+
+    <p style="margin-top:20px;font-size:12px;color:#748078">
+      Predictions are estimates and are not guaranteed.
+    </p>
+
+  `;
+
+  document
+    .getElementById('matchModal')
+    .classList.add('show');
+}
+
+
+function closeMatch(){
+
+  document
+    .getElementById('matchModal')
+    .classList.remove('show');
 
 }
 
 
-/* ==============================
+/* =========================================
    ACCOUNT
-============================== */
+========================================= */
 
 function openAccount(){
 
   document
-    .getElementById("accountModal")
-    .classList.add("show");
+    .getElementById('accountModal')
+    .classList.add('show');
 
   refreshAccountUI();
 }
@@ -1011,8 +1198,8 @@ function openAccount(){
 function closeAccount(){
 
   document
-    .getElementById("accountModal")
-    .classList.remove("show");
+    .getElementById('accountModal')
+    .classList.remove('show');
 
 }
 
@@ -1020,133 +1207,50 @@ function closeAccount(){
 function setStatus(message,success=false){
 
   const box =
-    document.getElementById("accountStatus");
+    document.getElementById('accountStatus');
 
   box.textContent = message;
 
   box.style.color =
-    success ? "#087f43" : "#b42318";
+    success ? '#087f43' : '#b42318';
 
 }
 
 
-function showLogin(){
-
-  document
-    .getElementById("accountName")
-    .classList.add("hidden");
-
-  document
-    .getElementById("accountTitle")
-    .textContent = "Log in";
-
-  document
-    .getElementById("accountIntro")
-    .textContent =
-      "Log in to save predictions.";
-
-  document
-    .getElementById("authButton")
-    .textContent = "Log in";
-
-  document
-    .getElementById("authButton")
-    .onclick = signInUser;
-
-  document
-    .getElementById("authSwitch")
-    .textContent = "Create a new account";
-
-  document
-    .getElementById("authSwitch")
-    .onclick = showSignup;
-
-  setStatus("");
-
-}
-
-
-function showSignup(){
-
-  document
-    .getElementById("accountName")
-    .classList.remove("hidden");
-
-  document
-    .getElementById("accountTitle")
-    .textContent =
-      "Create your account";
-
-  document
-    .getElementById("accountIntro")
-    .textContent =
-      "Create an account to save predictions.";
-
-  document
-    .getElementById("authButton")
-    .textContent =
-      "Create account";
-
-  document
-    .getElementById("authButton")
-    .onclick =
-      signUpUser;
-
-  document
-    .getElementById("authSwitch")
-    .textContent =
-      "I already have an account";
-
-  document
-    .getElementById("authSwitch")
-    .onclick =
-      showLogin;
-
-  setStatus("");
-
-}
-
+/* =========================================
+   SIGN UP
+========================================= */
 
 async function signUpUser(){
 
   const name =
-    document
-      .getElementById("accountName")
-      .value.trim();
+    document.getElementById('accountName')
+    .value.trim();
 
   const email =
-    document
-      .getElementById("accountEmail")
-      .value.trim();
+    document.getElementById('accountEmail')
+    .value.trim();
 
   const password =
-    document
-      .getElementById("accountPassword")
-      .value;
+    document.getElementById('accountPassword')
+    .value;
 
-
-  if(
-    !name ||
-    !email ||
-    password.length < 6
-  ){
+  if(!name || !email || password.length < 6){
 
     setStatus(
-      "Enter your name, email and a password of at least 6 characters."
+      'Enter your name, email and a password of at least 6 characters.'
     );
 
     return;
   }
 
-
   setStatus(
-    "Creating account...",
+    'Creating your account...',
     true
   );
 
-
   const {data,error} =
-    await sb.auth.signUp({
+    await db.auth.signUp({
 
       email,
       password,
@@ -1159,7 +1263,6 @@ async function signUpUser(){
 
     });
 
-
   if(error){
 
     setStatus(error.message);
@@ -1167,11 +1270,15 @@ async function signUpUser(){
     return;
   }
 
+  if(data.user && data.session){
 
-  if(data.session){
+    await createProfile(
+      data.user,
+      name
+    );
 
     setStatus(
-      "Account created successfully.",
+      'Account created successfully!',
       true
     );
 
@@ -1180,7 +1287,7 @@ async function signUpUser(){
   }else{
 
     setStatus(
-      "Account created. Check your email to confirm your account.",
+      'Account created. Check your email to confirm your account, then log in.',
       true
     );
 
@@ -1191,42 +1298,74 @@ async function signUpUser(){
 }
 
 
+/* =========================================
+   CREATE PROFILE
+========================================= */
+
+async function createProfile(user,name){
+
+  if(!user) return;
+
+  const {error} =
+    await db
+      .from('profiles')
+      .upsert(
+        {
+          id:user.id,
+          full_name:name || user.user_metadata?.full_name || '',
+          role:'user'
+        },
+        {
+          onConflict:'id'
+        }
+      );
+
+  if(error){
+
+    console.warn(
+      'Profile creation:',
+      error.message
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   LOGIN
+========================================= */
+
 async function signInUser(){
 
   const email =
-    document
-      .getElementById("accountEmail")
-      .value.trim();
+    document.getElementById('accountEmail')
+    .value.trim();
 
   const password =
-    document
-      .getElementById("accountPassword")
-      .value;
-
+    document.getElementById('accountPassword')
+    .value;
 
   if(!email || !password){
 
     setStatus(
-      "Enter your email and password."
+      'Enter your email and password.'
     );
 
     return;
   }
 
-
   setStatus(
-    "Logging in...",
+    'Logging in...',
     true
   );
 
-
-  const {error} =
-    await sb.auth.signInWithPassword({
+  const {data,error} =
+    await db.auth.signInWithPassword({
       email,
       password
     });
 
-
   if(error){
 
     setStatus(error.message);
@@ -1234,9 +1373,13 @@ async function signInUser(){
     return;
   }
 
+  await createProfile(
+    data.user,
+    data.user.user_metadata?.full_name || ''
+  );
 
   setStatus(
-    "Logged in successfully.",
+    'Logged in successfully.',
     true
   );
 
@@ -1245,65 +1388,126 @@ async function signInUser(){
 }
 
 
-async function signOutUser(){
+/* =========================================
+   LOGIN / SIGNUP SWITCH
+========================================= */
 
-  const {error} =
-    await sb.auth.signOut();
+function showLogin(){
 
+  document
+    .getElementById('accountName')
+    .classList.add('hidden');
 
-  if(error){
+  document
+    .getElementById('accountTitle')
+    .textContent =
+      'Log in';
 
-    setStatus(error.message);
+  document
+    .getElementById('accountIntro')
+    .textContent =
+      'Log in to save predictions and access your account.';
 
-    return;
-  }
+  const button =
+    document.getElementById('authButton');
 
+  button.textContent = 'Log in';
+  button.onclick = signInUser;
 
-  refreshAccountUI();
+  const switchButton =
+    document.getElementById('authSwitch');
 
-  setStatus(
-    "Logged out successfully.",
-    true
-  );
+  switchButton.textContent =
+    'Create a new account';
+
+  switchButton.onclick =
+    showSignup;
+
+  setStatus('');
 
 }
 
+
+function showSignup(){
+
+  document
+    .getElementById('accountName')
+    .classList.remove('hidden');
+
+  document
+    .getElementById('accountTitle')
+    .textContent =
+      'Create your account';
+
+  document
+    .getElementById('accountIntro')
+    .textContent =
+      'Create an account to save predictions and access them from any device.';
+
+  const button =
+    document.getElementById('authButton');
+
+  button.textContent =
+    'Create account';
+
+  button.onclick =
+    signUpUser;
+
+  const switchButton =
+    document.getElementById('authSwitch');
+
+  switchButton.textContent =
+    'I already have an account';
+
+  switchButton.onclick =
+    showLogin;
+
+  setStatus('');
+
+}
+
+
+/* =========================================
+   ACCOUNT UI
+========================================= */
 
 async function refreshAccountUI(){
 
-  const {data:{user}} =
-    await sb.auth.getUser();
+  const {
+    data:{user}
+  } = await db.auth.getUser();
 
+  const authForms =
+    document.getElementById('authForms');
 
-  const logged =
-    !!user;
+  const loggedInArea =
+    document.getElementById('loggedInArea');
 
+  const accountButton =
+    document.getElementById('accountBtn');
 
-  document
-    .getElementById("authForms")
-    .classList
-    .toggle("hidden",logged);
+  if(user){
 
+    authForms.classList.add('hidden');
 
-  document
-    .getElementById("loggedIn")
-    .classList
-    .toggle("hidden",!logged);
+    loggedInArea.classList.remove('hidden');
 
+    accountButton.textContent =
+      'My Account';
 
-  if(logged){
-
-    document
-      .getElementById("loggedText")
-      .textContent =
-        `Logged in as ${user.email}`;
-
-    document
-      .getElementById("accountTitle")
-      .textContent =
-        "Your account";
+    document.getElementById(
+      'loggedInText'
+    ).textContent =
+      `Logged in as ${user.email}`;
 
   }else{
+
+    authForms.classList.remove('hidden');
+
+    loggedInArea.classList.add('hidden');
+
+    accountButton.textContent =
+      'Account';
 
     showSignup();
 
@@ -1312,35 +1516,14 @@ async function refreshAccountUI(){
 }
 
 
-/* ==============================
-   SAVE PREDICTION
-============================== */
+/* =========================================
+   LOGOUT
+========================================= */
 
-async function savePrediction(matchId){
+async function signOutUser(){
 
-  const {data:{user}} =
-    await sb.auth.getUser();
-
-
-  if(!user){
-
-    openAccount();
-
-    setStatus(
-      "Please create an account or log in first."
-    );
-
-    return;
-  }
-
-
-  const {data:prediction,error} =
-    await sb
-      .from("predictions")
-      .select("id")
-      .eq("match_id",matchId)
-      .maybeSingle();
-
+  const {error} =
+    await db.auth.signOut();
 
   if(error){
 
@@ -1349,205 +1532,308 @@ async function savePrediction(matchId){
     return;
   }
 
+  document.getElementById(
+    'savedList'
+  ).innerHTML = '';
 
-  if(!prediction){
+  setStatus(
+    'You have been logged out.',
+    true
+  );
+
+  refreshAccountUI();
+
+}
+
+
+/* =========================================
+   SAVE PREDICTION
+========================================= */
+
+async function savePrediction(predictionId){
+
+  const {
+    data:{user}
+  } = await db.auth.getUser();
+
+  if(!user){
+
+    openAccount();
 
     setStatus(
-      "Prediction not found."
+      'Please create an account or log in before saving a prediction.'
     );
 
     return;
   }
 
+  const {error} =
+    await db
+      .from('saved_predictions')
+      .upsert(
+        {
+          user_id:user.id,
+          prediction_id:predictionId
+        },
+        {
+          onConflict:'user_id,prediction_id'
+        }
+      );
 
-  const {error:saveError} =
-    await sb
-      .from("saved_predictions")
-      .upsert({
-
-        user_id:user.id,
-
-        prediction_id:prediction.id
-
-      },{
-        onConflict:
-          "user_id,prediction_id"
-      });
-
-
-  if(saveError){
+  if(error){
 
     setStatus(
-      saveError.message
+      'Could not save prediction: ' +
+      error.message
     );
+
+    openAccount();
 
     return;
   }
-
 
   openAccount();
 
   setStatus(
-    "Prediction saved successfully.",
+    'Prediction saved to your account!',
     true
   );
 
 }
 
 
-/* ==============================
-   SAVED PREDICTIONS
-============================== */
+/* =========================================
+   SHOW SAVED PREDICTIONS
+========================================= */
 
 async function showSavedPredictions(){
 
   const box =
-    document.getElementById("savedList");
+    document.getElementById('savedList');
 
   box.innerHTML =
-    "<p>Loading...</p>";
+    '<p>Loading saved predictions...</p>';
 
-
-  const {data:{user}} =
-    await sb.auth.getUser();
-
+  const {
+    data:{user}
+  } = await db.auth.getUser();
 
   if(!user){
 
-    box.innerHTML = "";
+    box.innerHTML = '';
 
     return;
   }
 
-
-  const {data,error} =
-    await sb
-      .from("saved_predictions")
-      .select(`
-        created_at,
-        predictions(
-          prediction,
-          confidence,
-          correct_score,
-          matches(
-            home_team,
-            away_team,
-            league,
-            kickoff
-          )
-        )
-      `)
-      .eq("user_id",user.id)
-      .order("created_at",{
-        ascending:false
-      });
-
+  const {data:saved,error} =
+    await db
+      .from('saved_predictions')
+      .select('prediction_id,created_at')
+      .eq('user_id',user.id)
+      .order('created_at',{ascending:false});
 
   if(error){
 
     box.innerHTML =
-      `<p>${escapeHtml(error.message)}</p>`;
+      '<p>Unable to load saved predictions.</p>';
 
     return;
   }
 
-
-  if(!data || !data.length){
+  if(!saved || !saved.length){
 
     box.innerHTML =
-      "<p>No saved predictions yet.</p>";
+      '<p>You have no saved predictions yet.</p>';
 
     return;
   }
 
+  const ids =
+    saved.map(x => x.prediction_id);
+
+  const {data:preds} =
+    await db
+      .from('predictions')
+      .select('*')
+      .in('id',ids);
+
+  if(!preds){
+
+    box.innerHTML =
+      '<p>Unable to load saved predictions.</p>';
+
+    return;
+  }
 
   box.innerHTML =
-    "<h3>Saved predictions</h3>" +
+    '<h3>Saved predictions</h3>' +
 
-    data.map(item => {
-
-      const p =
-        item.predictions;
+    preds.map(p => {
 
       const m =
-        p?.matches;
-
+        matches.find(
+          x => x.id === p.match_id
+        );
 
       return `
 
-        <div
-          style="
-            padding:12px 0;
-            border-top:1px solid #ddd;
-          "
-        >
+        <div class="saved-item">
 
           <strong>
-            ${escapeHtml(m?.home_team || "Home")}
+            ${escapeHTML(m?.home_team || 'Home')}
             vs
-            ${escapeHtml(m?.away_team || "Away")}
+            ${escapeHTML(m?.away_team || 'Away')}
           </strong>
 
           <br>
 
           <small>
-            ${escapeHtml(p?.prediction || "")}
+            ${escapeHTML(m?.league || '')}
             •
-            ${p?.confidence || 0}%
+            ${escapeHTML(p.prediction)}
             •
-            ${escapeHtml(p?.correct_score || "")}
+            ${escapeHTML(String(p.confidence))}%
+            •
+            ${escapeHTML(p.correct_score || '')}
           </small>
 
         </div>
 
       `;
 
-    }).join("");
+    }).join('');
 
 }
 
 
-/* ==============================
-   SECURITY HELPER
-============================== */
+/* =========================================
+   AUTH STATE
+========================================= */
 
-function escapeHtml(value){
+db.auth.onAuthStateChange(
+  () => {
 
-  return String(value ?? "")
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+    setTimeout(
+      refreshAccountUI,
+      0
+    );
+
+  }
+);
+
+
+/* =========================================
+   FILTER EVENTS
+========================================= */
+
+document
+  .getElementById('predictionLeague')
+  .addEventListener(
+    'change',
+    renderPredictions
+  );
+
+document
+  .getElementById('matchLeague')
+  .addEventListener(
+    'change',
+    renderMatches
+  );
+
+
+/* =========================================
+   LEAGUE BUTTONS
+========================================= */
+
+document
+  .querySelectorAll('.league-card')
+  .forEach(button => {
+
+    button.addEventListener(
+      'click',
+      () => {
+
+        const name =
+          button.dataset.league;
+
+        document
+          .getElementById('matchLeague')
+          .value = name;
+
+        document
+          .getElementById('predictionLeague')
+          .value = name;
+
+        renderMatches();
+        renderPredictions();
+
+        document
+          .getElementById('predictions')
+          .scrollIntoView();
+
+      }
+    );
+
+  });
+
+
+/* =========================================
+   DATE FORMAT
+========================================= */
+
+function formatDate(value){
+
+  const date =
+    new Date(value);
+
+  return date.toLocaleString(
+    undefined,
+    {
+      weekday:'short',
+      month:'short',
+      day:'numeric',
+      hour:'2-digit',
+      minute:'2-digit'
+    }
+  );
 
 }
 
 
-/* ==============================
-   START
-============================== */
+/* =========================================
+   HTML SECURITY
+========================================= */
 
-loadMatches();
+function escapeHTML(value){
 
-loadPredictions();
+  return String(value ?? '')
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#039;');
 
-refreshAccountUI();
+}
 
 
-/*
-   Refresh live data every 10 minutes.
-*/
+/* =========================================
+   START WEBSITE
+========================================= */
 
-setInterval(() => {
+async function startApp(){
 
-  loadMatches();
+  await Promise.all([
+    loadMatches(),
+    loadPredictions()
+  ]);
 
-  loadPredictions();
+  refreshAccountUI();
 
-},600000);
+}
 
+startApp();
 
 </script>
 
 </body>
-</html>
+                                                 </html>
